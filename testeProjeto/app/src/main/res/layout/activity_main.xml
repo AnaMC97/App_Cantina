@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/segfeira"
+        android:layout_width="59dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="180dp"
+        android:text="2f"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/ementacarne"
+        android:layout_width="233dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="265dp"
+        android:backgroundTint="#FF0000"
+        android:text="Button"
+        app:layout_constraintBottom_toTopOf="@+id/ementapeixe"
+        app:layout_constraintStart_toEndOf="@+id/imgcarne"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imgveg"
+        android:layout_width="62dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="2dp"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgpeixe"
+        app:srcCompat="@drawable/vegatariano"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/imgcarne"
+        android:layout_width="62dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="265dp"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/carne"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/ementaveg"
+        android:layout_width="233dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="2dp"
+        android:backgroundTint="#013220"
+        android:text="Button"
+        app:layout_constraintStart_toEndOf="@+id/imgveg"
+        app:layout_constraintTop_toBottomOf="@+id/ementapeixe" />
+
+    <ImageButton
+        android:id="@+id/imgpeixe"
+        android:layout_width="62dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="2dp"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgcarne"
+        app:srcCompat="@drawable/peixe"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/ementapeixe"
+        android:layout_width="233dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="2dp"
+        android:backgroundTint="#0000FF"
+        app:layout_constraintStart_toEndOf="@+id/imgpeixe"
+        app:layout_constraintTop_toBottomOf="@+id/ementacarne" />
+
+    <Button
+        android:id="@+id/sexfeira"
+        android:layout_width="59dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="180dp"
+        android:text="6f"
+        app:layout_constraintStart_toEndOf="@+id/quifeira"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/terfeira"
+        android:layout_width="59dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="180dp"
+        android:text="3f"
+        app:layout_constraintStart_toEndOf="@+id/segfeira"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/quafeira"
+        android:layout_width="59dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="180dp"
+        android:text="4f"
+        app:layout_constraintStart_toEndOf="@+id/terfeira"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/quifeira"
+        android:layout_width="59dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="180dp"
+        android:text="5f"
+        app:layout_constraintStart_toEndOf="@+id/quafeira"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
