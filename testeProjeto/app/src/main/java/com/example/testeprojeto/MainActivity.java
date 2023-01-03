@@ -2,6 +2,7 @@ package com.example.testeprojeto;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -48,6 +49,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent it = new Intent(MainActivity.this, Residentes.class);
+        startActivity(it);
+        finish();
 
         menucarne = findViewById(R.id.ementacarne);
         menucarne.setOnClickListener(this);

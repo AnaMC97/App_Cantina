@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="#8C8C8C"
+    tools:context=".Residentes">
+
+    <Button
+        android:id="@+id/segfeira"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="450dp"
+        android:layout_marginTop="88dp"
+        android:backgroundTint="#8C8C8C"
+        android:text="2f"
+        android:textSize="60sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/terfeira"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="88dp"
+        android:backgroundTint="#8C8C8C"
+        android:text="3f"
+        android:textSize="60sp"
+        app:layout_constraintStart_toEndOf="@+id/segfeira"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/quafeira"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="88dp"
+        android:backgroundTint="#8C8C8C"
+        android:text="4f"
+        android:textSize="60sp"
+        app:layout_constraintStart_toEndOf="@+id/terfeira"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/quifeira"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="88dp"
+        android:backgroundTint="#8C8C8C"
+        android:text="5f"
+        android:textSize="60sp"
+        app:layout_constraintStart_toEndOf="@+id/quafeira"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/sexfeira"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="88dp"
+        android:backgroundTint="#8C8C8C"
+        android:text="6f"
+        android:textSize="60sp"
+        app:layout_constraintStart_toEndOf="@+id/quifeira"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imgcafe"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="450dp"
+        android:layout_marginTop="255dp"
+        android:background="#F3ECB0"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cafe"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/imgsun"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="450dp"
+        android:layout_marginTop="13dp"
+        android:background="#fabf7c"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgcafe"
+        app:srcCompat="@drawable/sun"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/imglua"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="18dp"
+        android:background="#98d8f8"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toEndOf="@+id/atualizarrefeicoes"
+        app:layout_constraintTop_toBottomOf="@+id/imgsun"
+        app:srcCompat="@drawable/lua"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/ementapequenoalmoco"
+        android:layout_width="572dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginEnd="118dp"
+        android:backgroundTint="#F3ECB0"
+        android:text="Button"
+        android:textColor="#000000"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/ementaalmoco"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgcafe"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/ementaalmoco"
+        android:layout_width="572dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="118dp"
+        android:backgroundTint="#fabf7c"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgsun"
+        app:layout_constraintTop_toBottomOf="@+id/ementapequenoalmoco" />
+
+    <Button
+        android:id="@+id/ementajantar"
+        android:layout_width="572dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="118dp"
+        android:backgroundTint="#98d8f8"
+        android:text="Button"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imglua"
+        app:layout_constraintTop_toBottomOf="@+id/ementaalmoco" />
+
+    <Button
+        android:id="@+id/atualizarrefeicoes"
+        android:layout_width="300dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="543dp"
+        android:layout_marginEnd="68dp"
+        android:backgroundTint="#6ECCAF"
+        android:text="Atualizar Refeição"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toStartOf="@+id/imglua"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/ajuda"
+        android:layout_width="70dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="15dp"
+        android:text="\?"
+        android:textSize="40dp"
+        android:backgroundTint="#6ECCAF"
+        app:cornerRadius="70dp"
+        app:iconPadding="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.944"
+        app:layout_constraintStart_toEndOf="@+id/sexfeira"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textoajuda"
+        android:layout_width="650dp"
+        android:layout_height="350dp"
+        android:text="Aqui vai ser mostrada a ajuda ao utilizador."
+        android:textColor="@color/black"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.77"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.65999997" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
