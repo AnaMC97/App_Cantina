@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Tela_1_Cantina">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="1288dp"
+        android:layout_height="127dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="4dp"
+            android:layout_height="112dp"
+            android:layout_weight="1"
+            android:contentDescription="TODO"
+            app:srcCompat="@drawable/C"
+            tools:ignore="ImageContrastCheck" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="480dp"
+            android:layout_height="123dp"
+            android:layout_weight="1"
+            android:text="@string/quant_ref"
+            android:textAlignment="center"
+            android:textSize="16pt" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="538dp"
+            android:layout_height="125dp"
+            android:layout_weight="1"
+            android:text="@string/ref_name"
+            android:textAlignment="center"
+            android:textSize="16pt" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="650dp"
+        android:layout_height="377dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/carne"
+            android:textSize="12pt" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/peixe"
+            android:textSize="12pt" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/vegetariano"
+            android:textSize="12pt" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="618dp"
+        android:layout_height="377dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout3"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nome"
+            android:textAlignment="inherit"
+            android:textSize="12pt" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Refeição"
+            android:textAlignment="inherit"
+            android:textSize="12pt" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="337dp"
+        android:layout_height="103dp"
+        android:text="Button"
+        tools:layout_editor_absoluteX="59dp"
+        tools:layout_editor_absoluteY="619dp" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="322dp"
+        android:layout_height="53dp"
+        android:text="Digite o código"
+        android:textSize="16pt"
+        tools:layout_editor_absoluteX="818dp"
+        tools:layout_editor_absoluteY="528dp" />
+
+    <EditText
+        android:id="@+id/editTextNumber"
+        android:layout_width="328dp"
+        android:layout_height="56dp"
+        android:ems="10"
+        android:inputType="number"
+        tools:layout_editor_absoluteX="818dp"
+        tools:layout_editor_absoluteY="607dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
