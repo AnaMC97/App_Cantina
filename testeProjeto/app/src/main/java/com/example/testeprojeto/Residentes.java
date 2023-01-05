@@ -13,10 +13,17 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+/* TODO
+    Alterar cor das refeições marcadas
+    Bloquear dias passados - meter a cinzento
+    highlight no dia selecionado
+    Alterar texto botão de ajuda
+*/
+
 public class Residentes extends AppCompatActivity implements View.OnClickListener {
 
     ImageButton imagemcafe, imagemsun, imagemlua;
-    Button segundafeira, tercafeira, quartafeira, quintafeira, sextafeira, menucafe, menualmoco, menujantar, ajudar;
+    Button segundafeira, tercafeira, quartafeira, quintafeira, sextafeira, menucafe, menualmoco, menujantar, ajudar, tudoPA, tudoJantar;
     TextView textoajudar;
 
     String VerdeClaro = "#ADE792";
@@ -47,6 +54,8 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
             0, 0, 0, 0, 0
     };
 
+    Button [] DiasComRefeicaoMarcada = new Button[5];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -55,6 +64,12 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_residentes);
+
+        DiasComRefeicaoMarcada[0] = (Button)findViewById(R.id.segfeira);
+        DiasComRefeicaoMarcada[1] = (Button)findViewById(R.id.terfeira);
+        DiasComRefeicaoMarcada[2] = (Button)findViewById(R.id.quafeira);
+        DiasComRefeicaoMarcada[3] = (Button)findViewById(R.id.quifeira);
+        DiasComRefeicaoMarcada[4] = (Button)findViewById(R.id.sexfeira);
 
         menucafe = findViewById(R.id.ementapequenoalmoco);
         menucafe.setOnClickListener(this);
@@ -86,6 +101,32 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
         menujantar.setVisibility(View.INVISIBLE);
         menucafe.setText(EmentaPequenoAlmoco);
         menualmoco.setText("Ver opções de almoço");
+
+        tudoPA = findViewById(R.id.TudoPA);
+        tudoPA.setOnClickListener(this);
+        tudoPA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                for(int i=0; i< EscolhasEmentaCafe.length; i++){
+                    EscolhasEmentaCafe[i] = 1;
+                    DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(VerdeClaro));
+                    menucafe.setBackgroundColor(Color.parseColor(VerdeClaro));
+                }
+            }
+        });
+
+        tudoJantar = findViewById(R.id.TudoJantar);
+        tudoJantar.setOnClickListener(this);
+        tudoJantar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                for(int i=0; i< EscolhasEmentaJantar.length; i++){
+                    EscolhasEmentaJantar[i] = 1;
+                    DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(VerdeClaro));
+                    menujantar.setBackgroundColor(Color.parseColor(VerdeClaro));
+                }
+            }
+        });
 
         ajudar = findViewById(R.id.ajuda);
         textoajudar = findViewById(R.id.textoajuda);
@@ -147,15 +188,8 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
         menujantar.setText(EmentaJantar[i]);
     }
 
+    // Botão para as ementas do PA
     public void ClickEmenta(int i){
-        Button [] DiasComRefeicaoMarcada = new Button[]{
-                (Button)findViewById(R.id.segfeira),
-                (Button)findViewById(R.id.terfeira),
-                (Button)findViewById(R.id.quafeira),
-                (Button)findViewById(R.id.quifeira),
-                (Button)findViewById(R.id.sexfeira)
-        };
-
         menucafe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -172,6 +206,8 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
             }
         });
 
+
+        // Botão para as ementas do almoço
         menualmoco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -181,6 +217,8 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
             }
         });
 
+
+        // Botão para as ementas do jantar
         menujantar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -196,28 +234,6 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
                 }
             }
         });
-    }
-
-
-
-
-
-    private void CafeSelecionado(){
-        menucafe.setBackgroundColor(Color.parseColor(VerdeClaro));
-        menualmoco.setBackgroundColor(Color.parseColor(AmareloEscuro));
-        menujantar.setBackgroundColor(Color.parseColor(Azul));
-    }
-
-    private void AlmocoSelecionado(){
-        menucafe.setBackgroundColor(Color.parseColor(AmareloClaro));
-        menualmoco.setBackgroundColor(Color.parseColor(VerdeClaro));
-        menujantar.setBackgroundColor(Color.parseColor(Azul));
-    }
-
-    private void JantarSelecionado(){
-        menucafe.setBackgroundColor(Color.parseColor(AmareloClaro));
-        menualmoco.setBackgroundColor(Color.parseColor(AmareloEscuro));
-        menujantar.setBackgroundColor(Color.parseColor(VerdeClaro));
     }
 
     private void NadaSelecionado(){

@@ -157,15 +157,37 @@
         android:id="@+id/atualizarrefeicoes"
         android:layout_width="300dp"
         android:layout_height="130dp"
-        android:layout_marginStart="82dp"
-        android:layout_marginTop="543dp"
-        android:layout_marginEnd="68dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="#6ECCAF"
         android:text="Atualizar Refeição"
         android:textSize="30sp"
-        app:layout_constraintEnd_toStartOf="@+id/imglua"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/TudoJantar" />
+
+    <Button
+        android:id="@+id/TudoPA"
+        android:layout_width="300dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#8C8C8C"
+        android:text="Pequeno Almoço"
+        android:textSize="26sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/TudoJantar"
+        android:layout_width="300dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="#8C8C8C"
+        android:text="Jantar"
+        android:textSize="27sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TudoPA" />
 
     <Button
         android:id="@+id/ajuda"
@@ -185,6 +207,20 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/textView"
+        android:layout_width="300dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="320dp"
+        android:background="#8C8C8C"
+        android:text="SELECIONAR TUDO"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="14pt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/textoajuda"
         android:layout_width="650dp"
         android:layout_height="350dp"
@@ -197,6 +233,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.65999997" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
