@@ -67,8 +67,8 @@ private TextView codigo;
             }
 
     public void Editarementa(View v){
-        Intent it = new Intent(Tela_1_Cantina.this,Editar_ementa.class);
+      /*  Intent it = new Intent(Tela_1_Cantina.this,Editar_ementa.class);
         startActivity(it);
-        finish();
+        finish();*/
     }
 }
