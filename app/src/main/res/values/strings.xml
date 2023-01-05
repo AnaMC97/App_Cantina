@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">App_Cantina</string>
+    <string name="quant_ref">Quantidade de Refeições</string>
+    <string name="ref_name">Refeições a Servir</string>
+    <string name="carne">Carne</string>
+    <string name="peixe">Peixe</string>
+    <string name="vegetariano">Vegetariano</string>
+</resources>

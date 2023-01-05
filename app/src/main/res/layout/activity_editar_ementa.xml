@@ -4,21 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Editar_ementa">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="480dp"
-        android:layout_height="463dp"
-        android:layout_marginStart="349dp"
-        android:layout_marginTop="168dp"
-        android:layout_marginEnd="451dp"
-        android:layout_marginBottom="169dp"
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="210dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="113dp"
+        android:layout_marginTop="647dp"
+        android:layout_marginEnd="921dp"
+        android:layout_marginBottom="34dp"
+        android:background="@drawable/custom_btn"
+        android:onClick="voltar"
+        android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.532"
-        app:srcCompat="@drawable/cencallogo" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
