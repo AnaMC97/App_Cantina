@@ -2,22 +2,23 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/teste"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Editar_ementa">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="369dp"
-        android:layout_height="387dp"
-        android:layout_marginStart="456dp"
-        android:layout_marginTop="207dp"
-        android:layout_marginEnd="455dp"
-        android:layout_marginBottom="206dp"
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="210dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="113dp"
+        android:layout_marginTop="647dp"
+        android:layout_marginEnd="921dp"
+        android:layout_marginBottom="34dp"
+        android:background="@drawable/custom_btn"
+        android:onClick="voltar"
+        android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cencallogo" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

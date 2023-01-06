@@ -1,23 +1,23 @@
 package com.example.app_cantina;
 
-import androidx.annotation.DrawableRes;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Tela_1_Cantina extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
 
+public class Tela_1_Cantina extends AppCompatActivity {
+//----------------------------------------------------------
+
+
+//--------------------------------------------------------------------------
 private TextView codigo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,8 @@ private TextView codigo;
         //------------------------------------------
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela1_cantina);
+
+
         //---------------------------------------------------
         //criação da var com a "senha"
         String varcod;
@@ -67,8 +69,8 @@ private TextView codigo;
             }
 
     public void Editarementa(View v){
-      /*  Intent it = new Intent(Tela_1_Cantina.this,Editar_ementa.class);
+        Intent it = new Intent(Tela_1_Cantina.this,Editar_ementa.class);
         startActivity(it);
-        finish();*/
+        finish();
     }
 }
