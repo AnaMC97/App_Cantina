@@ -24,7 +24,6 @@ import java.util.Calendar;
 public class Residentes extends AppCompatActivity implements View.OnClickListener {
 
     ImageButton imagemcafe, imagemsun, imagemlua;
-    Button segundafeira, tercafeira, quartafeira, quintafeira, sextafeira;
     Button menucafe, menualmoco, menujantar, ajudar, tudoPA, tudoJantar;
     TextView textoajudar;
 
@@ -62,8 +61,7 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
 
     int tudoSelecionadoPA = 0;
     int tudoSelecionadoJantar = 0;
-    int diaSemana;
-    Calendar calendario;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +74,7 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
 
         // São devolvidas as escolhas no menu de almoços, bem como as escolhas de jantar e PA
         Intent it = getIntent();
-        if(it.getIntArrayExtra("EmentaEscolhida") != null)
+        if(it.getIntArrayExtra("EmentaEscolhidaAlmoco") != null)
             EscolhasEmentaAlmoco = it.getIntArrayExtra("EmentaEscolhidaAlmoco");
 
         if(it.getIntArrayExtra("EmentaEscolhidaPA") != null)
@@ -90,6 +88,8 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
         DiasComRefeicaoMarcada[2] = (Button)findViewById(R.id.quafeira);
         DiasComRefeicaoMarcada[3] = (Button)findViewById(R.id.quifeira);
         DiasComRefeicaoMarcada[4] = (Button)findViewById(R.id.sexfeira);
+        for(int i = 0; i < DiasComRefeicaoMarcada.length; i++)
+            DiasComRefeicaoMarcada[i].setOnClickListener(this);
 
         menucafe = findViewById(R.id.ementapequenoalmoco);
         menucafe.setOnClickListener(this);
@@ -97,17 +97,6 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
         menualmoco.setOnClickListener(this);
         menujantar = findViewById(R.id.ementajantar);
         menujantar.setOnClickListener(this);
-
-        segundafeira = findViewById(R.id.segfeira);
-        segundafeira.setOnClickListener(this);
-        tercafeira = findViewById(R.id.terfeira);
-        tercafeira.setOnClickListener(this);
-        quartafeira = findViewById(R.id.quafeira);
-        quartafeira.setOnClickListener(this);
-        quintafeira = findViewById(R.id.quifeira);
-        quintafeira.setOnClickListener(this);
-        sextafeira = findViewById(R.id.sexfeira);
-        sextafeira.setOnClickListener(this);
 
         imagemcafe = findViewById(R.id.imgcafe);
         imagemsun = findViewById(R.id.imgsun);
@@ -121,8 +110,8 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
         menujantar.setVisibility(View.INVISIBLE);
         menucafe.setText(EmentaPequenoAlmoco);
 
-        calendario = Calendar.getInstance();
-        diaSemana = calendario.get(Calendar.DAY_OF_WEEK)-2;
+        Calendar calendario = Calendar.getInstance();
+        int diaSemana = calendario.get(Calendar.DAY_OF_WEEK)-2;
 
         for (int i = 0; i < EscolhasEmentaCafe.length; i++)
             if(EscolhasEmentaCafe[i] != 0 || EscolhasEmentaJantar[i] != 0)
@@ -235,30 +224,26 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
         switch (v.getId()) {
             case R.id.segfeira:
                 i = 0;
-                CorDiaSemanaSelecionado(i);
                 MostraEmenta(i, EscolhasEmentaCafe[i], EscolhasEmentaJantar[i]);
                 break;
             case R.id.terfeira:
                 i = 1;
-                CorDiaSemanaSelecionado(i);
                 MostraEmenta(i, EscolhasEmentaCafe[i], EscolhasEmentaJantar[i]);
                 break;
             case R.id.quafeira:
                 i = 2;
-                CorDiaSemanaSelecionado(i);
                 MostraEmenta(i, EscolhasEmentaCafe[i], EscolhasEmentaJantar[i]);
                 break;
             case R.id.quifeira:
                 i = 3;
-                CorDiaSemanaSelecionado(i);
                 MostraEmenta(i, EscolhasEmentaCafe[i], EscolhasEmentaJantar[i]);
                 break;
             case R.id.sexfeira:
                 i = 4;
-                CorDiaSemanaSelecionado(i);
                 MostraEmenta(i, EscolhasEmentaCafe[i], EscolhasEmentaJantar[i]);
                 break;
         }
+        CorDiaSemanaSelecionado(i);
         ClickEmenta(i);
     }
 
