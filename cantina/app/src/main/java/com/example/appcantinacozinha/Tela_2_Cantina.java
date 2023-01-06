@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import java.util.Calendar;
+
 /* TODO
     Implementar botão de ajuda
     Ligar base de dados
@@ -28,7 +30,6 @@ public class Tela_2_Cantina extends AppCompatActivity implements View.OnClickLis
     String corSobremesa = "#FFC0CB";
     String corJantar = "#98d8f8";
 
-    Button segundafeira, tercafeira, quartafeira, quintafeira, sextafeira;
     EditText ementaSopaSobremesa, ementaCarne, ementaPeixe, ementaVeg, ementaJantar;
     Button atualizarEmenta;
     ImageButton sopa, sobremesa, sopaSobremesa;
@@ -81,6 +82,8 @@ public class Tela_2_Cantina extends AppCompatActivity implements View.OnClickLis
             "Ementa sexta Sobremesa"
     };
 
+    Button [] DiasSemana = new Button[5];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -89,16 +92,13 @@ public class Tela_2_Cantina extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela2_cantina);
 
-        segundafeira = findViewById(R.id.segfeira);
-        segundafeira.setOnClickListener(this);
-        tercafeira = findViewById(R.id.terfeira);
-        tercafeira.setOnClickListener(this);
-        quartafeira = findViewById(R.id.quafeira);
-        quartafeira.setOnClickListener(this);
-        quintafeira = findViewById(R.id.quifeira);
-        quintafeira.setOnClickListener(this);
-        sextafeira = findViewById(R.id.sexfeira);
-        sextafeira.setOnClickListener(this);
+        DiasSemana[0] = (Button)findViewById(R.id.segfeira);
+        DiasSemana[1] = (Button)findViewById(R.id.terfeira);
+        DiasSemana[2] = (Button)findViewById(R.id.quafeira);
+        DiasSemana[3] = (Button)findViewById(R.id.quifeira);
+        DiasSemana[4] = (Button)findViewById(R.id.sexfeira);
+        for(int i = 0; i < DiasSemana.length; i++)
+            DiasSemana[i].setOnClickListener(this);
 
         ementaSopaSobremesa = findViewById(R.id.ementasopasobremesa);
         ementaSopaSobremesa.setOnClickListener(this);
@@ -110,6 +110,25 @@ public class Tela_2_Cantina extends AppCompatActivity implements View.OnClickLis
         ementaVeg.setOnClickListener(this);
         ementaJantar = findViewById(R.id.ementajantar);
         ementaJantar.setOnClickListener(this);
+
+        Calendar calendario = Calendar.getInstance();
+        int diaSemana = calendario.get(Calendar.DAY_OF_WEEK)-2;
+
+        switch (diaSemana) {
+            case Calendar.TUESDAY:
+                MudaCorDiasPassados(diaSemana);
+                break;
+            case Calendar.WEDNESDAY:
+                MudaCorDiasPassados(diaSemana);
+                break;
+            case Calendar.THURSDAY:
+                MudaCorDiasPassados(diaSemana);
+                break;
+            case Calendar.FRIDAY:
+                MudaCorDiasPassados(diaSemana);
+                break;
+        }
+
     }
 
     @Override
@@ -137,6 +156,7 @@ public class Tela_2_Cantina extends AppCompatActivity implements View.OnClickLis
                 MostraEmenta(i);
                 break;
         }
+        CorDiaSemanaSelecionado(i);
     }
 
     private void MostraEmenta(int i){
@@ -184,5 +204,22 @@ public class Tela_2_Cantina extends AppCompatActivity implements View.OnClickLis
 
     public void AtualizarEmenta (View v){
         // Envio à base de dados
+    }
+
+    public void CorDiaSemanaSelecionado(int i){
+        for(int j = 0; j < DiasSemana.length; j++){
+            if (j == i)
+                DiasSemana[j].setTextColor(Color.parseColor("#000000"));
+            else if (DiasSemana[j].isEnabled())
+                DiasSemana[j].setTextColor(Color.parseColor("#ffffff"));
+        }
+    }
+
+    public void MudaCorDiasPassados(int i){
+        for(int j = 0; j < i; j++){
+            DiasSemana[j].setEnabled(false);
+            DiasSemana[j].setBackgroundColor(Color.parseColor("#d8d8d8"));
+            DiasSemana[j].setTextColor(Color.parseColor("#ffffff"));
+        }
     }
 }

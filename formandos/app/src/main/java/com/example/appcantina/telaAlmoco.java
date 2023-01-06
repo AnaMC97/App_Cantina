@@ -19,7 +19,7 @@ import java.util.Calendar;
 public class telaAlmoco extends AppCompatActivity implements View.OnClickListener{
 
     ImageView imagemcarne, imagempeixe, imagemveg;
-    Button segundafeira, tercafeira, quartafeira, quintafeira, sextafeira, menucarne, menupeixe, menuveg, menucarne1, menupeixe1, menuveg1;
+    Button menucarne, menupeixe, menuveg, menucarne1, menupeixe1, menuveg1;
     String VerdeClaro = "#ADE792";
     String CorCarne = "#CCA6A6";
     String CorPeixe = "#90BEE3";
@@ -65,9 +65,6 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
 
     Button [] DiasComRefeicaoMarcada = new Button[5];
 
-    int diaSemana;
-    Calendar calendario;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -78,21 +75,20 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_almoco);
 
-        Intent it = getIntent();
-        if(it.getIntArrayExtra("EmentaEscolhida") != null)
-            EscolhasEmenta = it.getIntArrayExtra("EmentaEscolhidaAlmoco");
-
-        if(it.getIntArrayExtra("EmentaEscolhidaPA") != null)
-            EscolhasEmentaCafe = it.getIntArrayExtra("EmentaEscolhidaPA");
-
-        if(it.getIntArrayExtra("EmentaEscolhidaJantar") != null)
-            EscolhasEmentaJantar = it.getIntArrayExtra("EmentaEscolhidaJantar");
-
+        // Se for residente
         if(s==1){
             Button voltar = findViewById(R.id.voltar);
             voltar.setText("Voltar");
-        }
+            Intent it = getIntent();
+            if(it.getIntArrayExtra("EmentaEscolhidaAlmoco") != null)
+                EscolhasEmenta = it.getIntArrayExtra("EmentaEscolhidaAlmoco");
 
+            if(it.getIntArrayExtra("EmentaEscolhidaPA") != null)
+                EscolhasEmentaCafe = it.getIntArrayExtra("EmentaEscolhidaPA");
+
+            if(it.getIntArrayExtra("EmentaEscolhidaJantar") != null)
+                EscolhasEmentaJantar = it.getIntArrayExtra("EmentaEscolhidaJantar");
+        }
 
         menucarne = findViewById(R.id.ementacarne);
         menucarne.setOnClickListener(this);
@@ -106,22 +102,6 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
         menupeixe1.setOnClickListener(this);
         menuveg1 = findViewById(R.id.ementaveg1);
         menuveg1.setOnClickListener(this);
-
-
-        segundafeira = findViewById(R.id.segfeira);
-        segundafeira.setOnClickListener(this);
-
-        tercafeira = findViewById(R.id.terfeira);
-        tercafeira.setOnClickListener(this);
-
-        quartafeira = findViewById(R.id.quafeira);
-        quartafeira.setOnClickListener(this);
-
-        quintafeira = findViewById(R.id.quifeira);
-        quintafeira.setOnClickListener(this);
-
-        sextafeira = findViewById(R.id.sexfeira);
-        sextafeira.setOnClickListener(this);
 
         imagemcarne = findViewById(R.id.imgcarne);
         imagempeixe = findViewById(R.id.imgpeixe);
@@ -139,9 +119,11 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
         DiasComRefeicaoMarcada[2] = (Button)findViewById(R.id.quafeira);
         DiasComRefeicaoMarcada[3] = (Button)findViewById(R.id.quifeira);
         DiasComRefeicaoMarcada[4] = (Button)findViewById(R.id.sexfeira);
+        for(int i = 0; i < DiasComRefeicaoMarcada.length; i++)
+            DiasComRefeicaoMarcada[i].setOnClickListener(this);
 
-        calendario = Calendar.getInstance();
-        diaSemana = calendario.get(Calendar.DAY_OF_WEEK)-2;
+        Calendar calendario = Calendar.getInstance();
+        int diaSemana = calendario.get(Calendar.DAY_OF_WEEK)-2;
 
         switch (diaSemana) {
             case Calendar.TUESDAY:
@@ -263,6 +245,7 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
         });
 
     }
+
     @Override
     public void onClick(View v) {
         int i = -1;
@@ -275,30 +258,26 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
         switch (v.getId()) {
             case R.id.segfeira:
                 i = 0;
-                CorDiaSemanaSelecionado(i);
                 MostraEmenta(i, EscolhasEmenta[i]);
                 break;
             case R.id.terfeira:
                 i = 1;
-                CorDiaSemanaSelecionado(i);
                 MostraEmenta(i, EscolhasEmenta[i]);
                 break;
             case R.id.quafeira:
                 i = 2;
-                CorDiaSemanaSelecionado(i);
                 MostraEmenta(i, EscolhasEmenta[i]);
                 break;
             case R.id.quifeira:
                 i = 3;
-                CorDiaSemanaSelecionado(i);
                 MostraEmenta(i, EscolhasEmenta[i]);
                 break;
             case R.id.sexfeira:
                 i = 4;
-                CorDiaSemanaSelecionado(i);
                 MostraEmenta(i, EscolhasEmenta[i]);
                 break;
         }
+        CorDiaSemanaSelecionado(i);
         ClickEmenta(i);
     }
 
@@ -323,7 +302,6 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
     }
 
     public void ClickEmenta(int i){
-
 
         menucarne.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -409,14 +387,12 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
 
             //comunica c base de dados
         }else {
-
             Intent it = new Intent(telaAlmoco.this, Residentes.class);
             it.putExtra("EmentaEscolhidaAlmoco", EscolhasEmenta);
             it.putExtra("EmentaEscolhidaPA", EscolhasEmentaCafe);
             it.putExtra("EmentaEscolhidaJantar", EscolhasEmentaJantar);
             startActivity(it);
             finish();
-
         }
     }
 
