@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".telaAlmoco">
+
+    <Button
+        android:id="@+id/sexfeira"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="300dp"
+        android:backgroundTint="#8C8C8C"
+        android:onClick="onClick"
+        android:text="6F"
+        android:textSize="30pt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/help"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/segfeira"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="300dp"
+        android:backgroundTint="#8C8C8C"
+        android:onClick="onClick"
+        android:text="2F"
+        android:textSize="30pt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/terfeira"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/terfeira"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="300dp"
+        android:backgroundTint="#8C8C8C"
+        android:onClick="onClick"
+        android:text="3F"
+        android:textSize="30pt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/quafeira"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/quafeira"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="300dp"
+        android:backgroundTint="#8C8C8C"
+        android:onClick="onClick"
+        android:text="4F"
+        android:textSize="30pt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/quifeira"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/quifeira"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="300dp"
+        android:backgroundTint="#8C8C8C"
+        android:onClick="onClick"
+        android:text="5F"
+        android:textSize="30pt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/sexfeira"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/help"
+        android:layout_width="70dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="104dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#6ECCAF"
+        android:onClick="onClick"
+        android:text="\?"
+        android:textAlignment="center"
+        android:textSize="40dp"
+        app:cornerRadius="70dp"
+        app:iconPadding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="720dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="70dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.921"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quafeira" />
+
+    <Button
+        android:id="@+id/ementacarne"
+        android:layout_width="600dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="70dp"
+        android:backgroundTint="#CCA6A6"
+        android:onClick="onClick"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.934"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <ImageView
+        android:id="@+id/imgcarne"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="450dp"
+        android:layout_marginTop="340dp"
+        app:layout_constraintEnd_toStartOf="@+id/ementacarne"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/carne" />
+
+    <Button
+        android:id="@+id/ementapeixe"
+        android:layout_width="600dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="70dp"
+        android:backgroundTint="#90BEE3"
+        android:onClick="onClick"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.936"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ementacarne" />
+
+    <ImageView
+        android:id="@+id/imgpeixe"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="470dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/ementapeixe"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgcarne"
+        app:srcCompat="@drawable/peixe" />
+
+    <Button
+        android:id="@+id/ementaveg"
+        android:layout_width="600dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="108dp"
+        android:backgroundTint="#96C698"
+        android:onClick="onClick"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ementapeixe" />
+
+    <ImageView
+        android:id="@+id/imgveg"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="450dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toStartOf="@+id/ementaveg"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgpeixe"
+        app:srcCompat="@drawable/vegatariano" />
+
+    <Button
+        android:id="@+id/ementacarne1"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#CCA6A6"
+        android:onClick="Carne"
+        android:text="Carne"
+        android:textSize="12pt"
+        app:layout_constraintBottom_toTopOf="@+id/ementapeixe1"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/ementapeixe1"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginBottom="12dp"
+        android:backgroundTint="#90BEE3"
+        android:text="Peixe"
+        android:textSize="12pt"
+        app:layout_constraintBottom_toTopOf="@+id/ementaveg1"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/ementaveg1"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginBottom="132dp"
+        android:backgroundTint="#96C698"
+        android:text="Vegetariano"
+        android:textSize="12pt"
+        app:layout_constraintBottom_toTopOf="@+id/voltar"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/voltar"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="80dp"
+        android:backgroundTint="#8C8C8C"
+        android:onClick="VoltarAtualizar"
+        android:text="Atualizar Refeição"
+        android:textSize="14pt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ementaveg"
+        app:layout_constraintHorizontal_bias="0.29"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="650dp"
+        android:layout_height="350dp"
+        android:text="Texto se clicar no botao de ajuda"
+        android:textSize="40pt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.769"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.657" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="84dp"
+        android:text="Selecionar Tudo"
+        android:textSize="16pt"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:background="#8C8C8C"
+        app:layout_constraintBottom_toTopOf="@+id/ementacarne1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.955" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

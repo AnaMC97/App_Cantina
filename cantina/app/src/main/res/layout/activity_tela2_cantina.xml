@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Tela_2_Cantina">
+
+    <Button
+        android:id="@+id/segfeira"
+        android:layout_width="140dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="450dp"
+        android:layout_marginTop="47dp"
+        android:backgroundTint="#8C8C8C"
+        android:text="2f"
+        android:textSize="60sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/terfeira"
+        android:layout_width="140dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="47dp"
+        android:backgroundTint="#8C8C8C"
+        android:text="3f"
+        android:textSize="60sp"
+        app:layout_constraintStart_toEndOf="@+id/segfeira"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/quafeira"
+        android:layout_width="140dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="47dp"
+        android:backgroundTint="#8C8C8C"
+        android:text="4f"
+        android:textSize="60sp"
+        app:layout_constraintStart_toEndOf="@+id/terfeira"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/quifeira"
+        android:layout_width="140dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="47dp"
+        android:backgroundTint="#8C8C8C"
+        android:text="5f"
+        android:textSize="60sp"
+        app:layout_constraintStart_toEndOf="@+id/quafeira"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/sexfeira"
+        android:layout_width="140dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="47dp"
+        android:backgroundTint="#8C8C8C"
+        android:text="6f"
+        android:textSize="60sp"
+        app:layout_constraintStart_toEndOf="@+id/quifeira"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/atualizarementa"
+        android:layout_width="300dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="128dp"
+        android:backgroundTint="#6ECCAF"
+        android:onClick="AtualizarEmenta"
+        android:text="Atualizar Ementa"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/atualizaSopa" />
+
+    <ImageButton
+        android:id="@+id/atualizaSopa"
+        android:layout_width="140dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#FFDAB9"
+        android:scaleType="centerInside"
+        android:text="Sopa"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@drawable/sopa" />
+
+    <ImageButton
+        android:id="@+id/atualizaSobremesa"
+        android:layout_width="140dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#FFC0CB"
+        android:scaleType="centerInside"
+        android:text="Sobremesa"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/atualizaSopa"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@drawable/sobremesa" />
+
+    <Button
+        android:id="@+id/Voltar"
+        android:layout_width="300dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="60dp"
+        android:backgroundTint="#8C8C8C"
+        android:onClick="Voltar"
+        android:text="Voltar"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/atualizarementa" />
+
+    <ImageButton
+        android:id="@+id/imgsopasobremesa"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="450dp"
+        android:layout_marginTop="10dp"
+        android:background="#FFDAB9"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/segfeira"
+        app:srcCompat="@drawable/sopa"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/imgcarne"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="450dp"
+        android:layout_marginTop="8dp"
+        android:background="#CCA6A6"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgsopasobremesa"
+        app:srcCompat="@drawable/carne"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/imgveg"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="450dp"
+        android:layout_marginTop="8dp"
+        android:background="#96C698"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgpeixe"
+        app:srcCompat="@drawable/vegatariano"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/imglua"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="450dp"
+        android:layout_marginTop="8dp"
+        android:background="#98d8f8"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgveg"
+        app:srcCompat="@drawable/lua"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/imgpeixe"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="450dp"
+        android:layout_marginTop="8dp"
+        android:background="#90BEE3"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgcarne"
+        app:srcCompat="@drawable/peixe"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/ementasopasobremesa"
+        android:layout_width="595dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:background="#FFDAB9"
+        android:text="Button"
+        android:textColor="#000000"
+        android:textSize="40sp"
+        app:layout_constraintStart_toEndOf="@+id/imgsopasobremesa"
+        app:layout_constraintTop_toBottomOf="@+id/segfeira" />
+
+    <EditText
+        android:id="@+id/ementacarne"
+        android:layout_width="595dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:background="#CCA6A6"
+        android:text="Button"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        android:textSize="40sp"
+        app:layout_constraintStart_toEndOf="@+id/imgcarne"
+        app:layout_constraintTop_toBottomOf="@+id/ementasopasobremesa" />
+
+    <EditText
+        android:id="@+id/ementapeixe"
+        android:layout_width="595dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:background="#90BEE3"
+        android:text="Button"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        android:textSize="40sp"
+        app:layout_constraintStart_toEndOf="@+id/imgpeixe"
+        app:layout_constraintTop_toBottomOf="@+id/ementacarne" />
+
+    <EditText
+        android:id="@+id/ementaveg"
+        android:layout_width="595dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#96C698"
+        android:text="Button"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        android:textSize="40sp"
+        app:layout_constraintStart_toEndOf="@+id/imgveg"
+        app:layout_constraintTop_toBottomOf="@+id/ementapeixe" />
+
+    <EditText
+        android:id="@+id/ementajantar"
+        android:layout_width="595dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#98d8f8"
+        android:text="Button"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        android:textSize="40sp"
+        app:layout_constraintStart_toEndOf="@+id/imglua"
+        app:layout_constraintTop_toBottomOf="@+id/ementaveg" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="110dp"
+        android:background="#8C8C8C"
+        android:gravity="center"
+        android:text="ALTERAR:"
+        android:textColor="@color/white"
+        android:textSize="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Esqueci_Senha">
+
+    <TextView
+        android:id="@+id/txt1"
+        android:layout_width="453dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="399dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="428dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="sans-serif-black"
+        android:text="inserenif"
+        android:textAlignment="center"
+        android:textSize="16pt"
+        app:layout_constraintBottom_toTopOf="@+id/txtnif"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txtnif"
+        android:layout_width="454dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="398dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="428dp"
+        android:layout_marginBottom="27dp"
+        android:autofillHints=""
+
+        android:background="@drawable/margem_text"
+        android:ellipsize="end"
+        android:ems="10"
+
+        android:inputType="number"
+        android:maxLength="9"
+        android:maxLines="1"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/btnvalidar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt1"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/txt2"
+        android:layout_width="420dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="432dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="428dp"
+        android:fontFamily="sans-serif-black"
+        android:text="codigo"
+        android:textAlignment="center"
+        android:textSize="16pt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnvalidar" />
+
+    <EditText
+        android:id="@+id/txtcodigo"
+        android:layout_width="464dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="400dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="416dp"
+        android:autofillHints=""
+
+        android:background="@drawable/margem_text"
+        android:ellipsize="end"
+        android:ems="10"
+
+        android:inputType="number"
+        android:maxLength="6"
+        android:maxLines="1"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt2"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/btnvalidar"
+        android:layout_width="342dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="450dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="488dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/custom_edit"
+        android:onClick="Validar"
+        android:text="Validar"
+        android:textAlignment="center"
+        android:textSize="14pt"
+        app:layout_constraintBottom_toTopOf="@+id/txt2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtnif" />
+
+    <Button
+        android:id="@+id/btnvoltar"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/custom_edit"
+        android:onClick="Voltar"
+        android:text="voltar"
+        android:textAlignment="center"
+        android:textSize="10pt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

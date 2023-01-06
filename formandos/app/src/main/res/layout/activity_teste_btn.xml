@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".TelaInicial">
+
+    <LinearLayout
+        android:layout_width="1113dp"
+        android:layout_height="803dp"
+        android:layout_marginStart="107dp"
+        android:layout_marginEnd="60dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="152dp"
+            android:layout_marginBottom="10dp"
+            android:text="APP Cantina"
+            android:textAlignment="center"
+            android:textSize="60pt" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="843dp"
+            android:layout_height="wrap_content"
+            android:text="Por favor, insira cartão no leitor "
+            android:textAlignment="center"
+            android:textSize="25pt" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"></LinearLayout>
+
+        <Button
+            android:layout_width="501dp"
+            android:layout_height="106dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/custom_edit"
+            android:onClick="EsqueciSenha"
+            android:text="Esqueci-me do cartão"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="14pt" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
