@@ -176,7 +176,7 @@
         android:text="Pequeno Almoço"
         android:textSize="26sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textoajudar2" />
 
     <Button
         android:id="@+id/TudoJantar"
@@ -208,16 +208,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textoajudar2"
         android:layout_width="300dp"
         android:layout_height="65dp"
         android:layout_marginStart="75dp"
         android:layout_marginTop="320dp"
-        android:background="#8C8C8C"
-        android:text="SELECIONAR TUDO"
-        android:textStyle="bold"
         android:gravity="center"
+        android:text="SELECIONAR TUDO"
+        android:textColor="@color/black"
         android:textSize="14pt"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

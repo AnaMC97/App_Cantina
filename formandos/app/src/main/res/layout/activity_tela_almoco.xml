@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".telaAlmoco">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="352dp"
+        android:layout_height="88dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="10dp"
+        android:background="#FFDAB9"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/textView2"
+        app:layout_constraintHorizontal_bias="0.982"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quafeira" />
+
     <Button
         android:id="@+id/sexfeira"
         android:layout_width="140dp"
@@ -18,7 +31,7 @@
         android:text="6F"
         android:textSize="30pt"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/help"
+        app:layout_constraintEnd_toStartOf="@+id/ajuda2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -87,7 +100,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/help"
+        android:id="@+id/ajuda2"
         android:layout_width="70dp"
         android:layout_height="80dp"
         android:layout_marginTop="104dp"
@@ -104,14 +117,13 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="720dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="70dp"
+        android:layout_width="352dp"
+        android:layout_height="88dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="108dp"
+        android:background="#FFC0CB"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.921"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quafeira" />
 
     <Button
@@ -133,7 +145,9 @@
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:layout_marginStart="450dp"
-        android:layout_marginTop="340dp"
+        android:layout_marginTop="332dp"
+        android:layout_marginEnd="10dp"
+        android:background="#CCA6A6"
         app:layout_constraintEnd_toStartOf="@+id/ementacarne"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -159,7 +173,9 @@
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:layout_marginStart="470dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="10dp"
+        android:background="#90BEE3"
         app:layout_constraintEnd_toStartOf="@+id/ementapeixe"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -183,7 +199,9 @@
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:layout_marginStart="450dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="10dp"
+        android:background="#96C698"
         app:layout_constraintEnd_toStartOf="@+id/ementaveg"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -191,46 +209,9 @@
         app:srcCompat="@drawable/vegatariano" />
 
     <Button
-        android:id="@+id/ementacarne1"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="#CCA6A6"
-        android:onClick="Carne"
-        android:text="Carne"
-        android:textSize="12pt"
-        app:layout_constraintBottom_toTopOf="@+id/ementapeixe1"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/ementapeixe1"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginBottom="12dp"
-        android:backgroundTint="#90BEE3"
-        android:text="Peixe"
-        android:textSize="12pt"
-        app:layout_constraintBottom_toTopOf="@+id/ementaveg1"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/ementaveg1"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginBottom="132dp"
-        android:backgroundTint="#96C698"
-        android:text="Vegetariano"
-        android:textSize="12pt"
-        app:layout_constraintBottom_toTopOf="@+id/voltar"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
         android:id="@+id/voltar"
         android:layout_width="300dp"
-        android:layout_height="100dp"
+        android:layout_height="130dp"
         android:layout_marginBottom="80dp"
         android:backgroundTint="#8C8C8C"
         android:onClick="VoltarAtualizar"
@@ -242,31 +223,71 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textoajudar2"
         android:layout_width="650dp"
         android:layout_height="350dp"
-        android:text="Texto se clicar no botao de ajuda"
-        android:textSize="40pt"
+        android:text="Como marcar uma refeição? \n
+        1º  Selecione o dia da semana que pretende marcar a refeição.\n
+        2º  Escolha o tipo de refeição de acordo com a ementa semanal.\n
+        3º  Caso opte por selecionar os dias todos, no lado superior esquerdo existe essa opção.\n
+        4º  Por fim, clique em ATUALIZAR REFEIÇÃO."
+        android:textSize="16pt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.769"
+        app:layout_constraintHorizontal_bias="0.765"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.657" />
+        app:layout_constraintVertical_bias="0.624" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="84dp"
-        android:text="Selecionar Tudo"
-        android:textSize="16pt"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:background="#8C8C8C"
+        android:layout_height="65dp"
+        android:layout_marginStart="76dp"
+        android:gravity="center"
+        android:text="SELECIONAR TUDO"
+        android:textColor="@color/black"
+        android:textSize="14pt"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/ementacarne1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.955" />
+        app:layout_constraintVertical_bias="0.972" />
+
+    <Button
+        android:id="@+id/ementapeixe1"
+        android:layout_width="300dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginBottom="4dp"
+        android:backgroundTint="#8C8C8C"
+        android:text="Peixe"
+        android:textSize="12pt"
+        app:layout_constraintBottom_toTopOf="@+id/ementaveg1"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/ementacarne1"
+        android:layout_width="300dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="76dp"
+        android:backgroundTint="#8C8C8C"
+        android:onClick="Carne"
+        android:text="Carne"
+        android:textSize="12pt"
+        app:layout_constraintBottom_toTopOf="@+id/ementapeixe1"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/ementaveg1"
+        android:layout_width="300dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginBottom="52dp"
+        android:backgroundTint="#8C8C8C"
+        android:text="Vegetariano"
+        android:textSize="12pt"
+        app:layout_constraintBottom_toTopOf="@+id/voltar"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

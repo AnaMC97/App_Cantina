@@ -8,6 +8,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,13 +20,14 @@ import java.util.Calendar;
 public class telaAlmoco extends AppCompatActivity implements View.OnClickListener{
 
     ImageView imagemcarne, imagempeixe, imagemveg;
-    Button segundafeira, tercafeira, quartafeira, quintafeira, sextafeira, menucarne, menupeixe, menuveg, menucarne1, menupeixe1, menuveg1;
+    Button segundafeira, tercafeira, quartafeira, quintafeira, sextafeira, menucarne, menupeixe, menuveg, menucarne1, menupeixe1, menuveg1, ajudar2;
     String VerdeClaro = "#ADE792";
     String CorCarne = "#CCA6A6";
     String CorPeixe = "#90BEE3";
     String CorVeg = "#96C698";
     String Cinza = "#8C8C8C";
     String CinzentoClaro = "#d8d8d8";
+    TextView textoajudar2;
     int s = 1;
 
     int selecionadoTudoCarne = 0;
@@ -259,6 +261,21 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
                     menucarne.setBackgroundColor(Color.parseColor(CorVeg));
                     selecionadoTudoVeg = 0;
                 }
+            }
+        });
+
+        ajudar2 = findViewById(R.id.ajuda2);
+        textoajudar2 = findViewById(R.id.textoajudar2);
+        ajudar2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imagemcarne.setVisibility(View.INVISIBLE);
+                imagempeixe.setVisibility(View.INVISIBLE);
+                imagemveg.setVisibility(View.INVISIBLE);
+                menucarne.setVisibility(View.INVISIBLE);
+                menupeixe.setVisibility(View.INVISIBLE);
+                menuveg.setVisibility(View.INVISIBLE);
+                textoajudar2.setVisibility(View.VISIBLE);
             }
         });
 
