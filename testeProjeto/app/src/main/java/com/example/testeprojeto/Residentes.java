@@ -23,7 +23,8 @@ import android.widget.TextView;
 public class Residentes extends AppCompatActivity implements View.OnClickListener {
 
     ImageButton imagemcafe, imagemsun, imagemlua;
-    Button segundafeira, tercafeira, quartafeira, quintafeira, sextafeira, menucafe, menualmoco, menujantar, ajudar, tudoPA, tudoJantar;
+    Button segundafeira, tercafeira, quartafeira, quintafeira, sextafeira;
+    Button menucafe, menualmoco, menujantar, ajudar, tudoPA, tudoJantar;
     TextView textoajudar;
 
     String VerdeClaro = "#ADE792";
@@ -31,6 +32,7 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
     String AmareloClaro = "#F3ECB0";
     String AmareloEscuro = "#fabf7c";
     String Azul = "#98d8f8";
+    String Cinzento = "#8C8C8C";
 
     String EmentaPequenoAlmoco = "Pequeno almoço";
 
@@ -56,6 +58,9 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
 
     Button [] DiasComRefeicaoMarcada = new Button[5];
 
+    int tudoSelecionadoPA = 0;
+    int tudoSelecionadoJantar = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -64,6 +69,10 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_residentes);
+
+        // São devolvidas as escolhas no menu de almoços
+        Intent intent = getIntent();
+        EscolhasEmentaAlmoco = intent.getIntArrayExtra("EmentaEscolhida");
 
         DiasComRefeicaoMarcada[0] = (Button)findViewById(R.id.segfeira);
         DiasComRefeicaoMarcada[1] = (Button)findViewById(R.id.terfeira);
@@ -100,18 +109,31 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
         menualmoco.setVisibility(View.INVISIBLE);
         menujantar.setVisibility(View.INVISIBLE);
         menucafe.setText(EmentaPequenoAlmoco);
-        menualmoco.setText("Ver opções de almoço");
 
         tudoPA = findViewById(R.id.TudoPA);
         tudoPA.setOnClickListener(this);
         tudoPA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for(int i=0; i< EscolhasEmentaCafe.length; i++){
-                    EscolhasEmentaCafe[i] = 1;
-                    DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(VerdeClaro));
-                    menucafe.setBackgroundColor(Color.parseColor(VerdeClaro));
+                if(tudoSelecionadoPA == 0){
+                    for(int i=0; i< EscolhasEmentaCafe.length; i++){
+                        EscolhasEmentaCafe[i] = 1;
+                        DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(VerdeClaro));
+                        menucafe.setBackgroundColor(Color.parseColor(VerdeClaro));
+                    }
+                    tudoSelecionadoPA = 1;
+                    tudoPA.setBackgroundColor(Color.parseColor(VerdeClaro));
+                }else{
+                    for(int i=0; i< EscolhasEmentaCafe.length; i++){
+                        EscolhasEmentaCafe[i] = 0;
+                        menucafe.setBackgroundColor(Color.parseColor(AmareloClaro));
+                        if (tudoSelecionadoJantar == 0)
+                            DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(Cinzento));
+                    }
+                    tudoSelecionadoPA = 0;
+                    tudoPA.setBackgroundColor(Color.parseColor(Cinzento));
                 }
+
             }
         });
 
@@ -120,10 +142,23 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
         tudoJantar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for(int i=0; i< EscolhasEmentaJantar.length; i++){
-                    EscolhasEmentaJantar[i] = 1;
-                    DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(VerdeClaro));
-                    menujantar.setBackgroundColor(Color.parseColor(VerdeClaro));
+                if(tudoSelecionadoJantar == 0){
+                    for(int i=0; i< EscolhasEmentaJantar.length; i++){
+                        EscolhasEmentaJantar[i] = 1;
+                        DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(VerdeClaro));
+                        menujantar.setBackgroundColor(Color.parseColor(VerdeClaro));
+                    }
+                    tudoSelecionadoJantar = 1;
+                    tudoJantar.setBackgroundColor(Color.parseColor(VerdeClaro));
+                } else {
+                    for(int i=0; i< EscolhasEmentaJantar.length; i++){
+                        EscolhasEmentaJantar[i] = 0;
+                        menujantar.setBackgroundColor(Color.parseColor(Azul));
+                        if (tudoSelecionadoPA == 0)
+                            DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(Cinzento));
+                    }
+                    tudoSelecionadoJantar = 0;
+                    tudoJantar.setBackgroundColor(Color.parseColor(Cinzento));
                 }
             }
         });
@@ -212,6 +247,7 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
             @Override
             public void onClick(View view) {
                 Intent it = new Intent(Residentes.this, MainActivity.class);
+                it.putExtra("EscolhaEmenta", EscolhasEmentaAlmoco);
                 startActivity(it);
                 finish();
             }
