@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Calendar;
+
 /* TODO
     Alterar cor das refeições marcadas
     Bloquear dias passados - meter a cinzento
@@ -32,6 +34,7 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
     String AmareloEscuro = "#fabf7c";
     String Azul = "#98d8f8";
     String Cinzento = "#8C8C8C";
+    String CinzentoClaro = "#d8d8d8";
 
     String EmentaPequenoAlmoco = "Pequeno almoço";
 
@@ -59,6 +62,8 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
 
     int tudoSelecionadoPA = 0;
     int tudoSelecionadoJantar = 0;
+    int diaSemana;
+    Calendar calendario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,9 +74,16 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_residentes);
 
-        // São devolvidas as escolhas no menu de almoços
-        Intent intent = getIntent();
-        EscolhasEmentaAlmoco = intent.getIntArrayExtra("EmentaEscolhida");
+        // São devolvidas as escolhas no menu de almoços, bem como as escolhas de jantar e PA
+        Intent it = getIntent();
+        if(it.getIntArrayExtra("EmentaEscolhida") != null)
+            EscolhasEmentaAlmoco = it.getIntArrayExtra("EmentaEscolhidaAlmoco");
+
+        if(it.getIntArrayExtra("EmentaEscolhidaPA") != null)
+            EscolhasEmentaCafe = it.getIntArrayExtra("EmentaEscolhidaPA");
+
+        if(it.getIntArrayExtra("EmentaEscolhidaJantar") != null)
+            EscolhasEmentaJantar = it.getIntArrayExtra("EmentaEscolhidaJantar");
 
         DiasComRefeicaoMarcada[0] = (Button)findViewById(R.id.segfeira);
         DiasComRefeicaoMarcada[1] = (Button)findViewById(R.id.terfeira);
@@ -109,6 +121,29 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
         menujantar.setVisibility(View.INVISIBLE);
         menucafe.setText(EmentaPequenoAlmoco);
 
+        calendario = Calendar.getInstance();
+        diaSemana = calendario.get(Calendar.DAY_OF_WEEK)-2;
+
+        for (int i = 0; i < EscolhasEmentaCafe.length; i++)
+            if(EscolhasEmentaCafe[i] != 0 || EscolhasEmentaJantar[i] != 0)
+                DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(VerdeClaro));
+
+
+        switch (diaSemana) {
+            case Calendar.TUESDAY:
+                MudaCorDiasPassados(diaSemana);
+                break;
+            case Calendar.WEDNESDAY:
+                MudaCorDiasPassados(diaSemana);
+                break;
+            case Calendar.THURSDAY:
+                MudaCorDiasPassados(diaSemana);
+                break;
+            case Calendar.FRIDAY:
+                MudaCorDiasPassados(diaSemana);
+                break;
+        }
+
         tudoPA = findViewById(R.id.TudoPA);
         tudoPA.setOnClickListener(this);
         tudoPA.setOnClickListener(new View.OnClickListener() {
@@ -116,18 +151,23 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
             public void onClick(View view) {
                 if(tudoSelecionadoPA == 0){
                     for(int i=0; i< EscolhasEmentaCafe.length; i++){
-                        EscolhasEmentaCafe[i] = 1;
-                        DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(VerdeClaro));
-                        menucafe.setBackgroundColor(Color.parseColor(VerdeClaro));
+                        if (DiasComRefeicaoMarcada[i].isEnabled()){
+                            EscolhasEmentaCafe[i] = 1;
+                            DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(VerdeClaro));
+                            menucafe.setBackgroundColor(Color.parseColor(VerdeClaro));
+                        }
                     }
                     tudoSelecionadoPA = 1;
                     tudoPA.setBackgroundColor(Color.parseColor(VerdeClaro));
                 }else{
                     for(int i=0; i< EscolhasEmentaCafe.length; i++){
-                        EscolhasEmentaCafe[i] = 0;
-                        menucafe.setBackgroundColor(Color.parseColor(AmareloClaro));
-                        if (tudoSelecionadoJantar == 0)
-                            DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(Cinzento));
+                        if (DiasComRefeicaoMarcada[i].isEnabled()) {
+                            EscolhasEmentaCafe[i] = 0;
+                            menucafe.setBackgroundColor(Color.parseColor(AmareloClaro));
+                            if (tudoSelecionadoJantar == 0)
+                                DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(Cinzento));
+                        }
+
                     }
                     tudoSelecionadoPA = 0;
                     tudoPA.setBackgroundColor(Color.parseColor(Cinzento));
@@ -143,18 +183,22 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
             public void onClick(View view) {
                 if(tudoSelecionadoJantar == 0){
                     for(int i=0; i< EscolhasEmentaJantar.length; i++){
-                        EscolhasEmentaJantar[i] = 1;
-                        DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(VerdeClaro));
-                        menujantar.setBackgroundColor(Color.parseColor(VerdeClaro));
+                        if (DiasComRefeicaoMarcada[i].isEnabled()){
+                            EscolhasEmentaJantar[i] = 1;
+                            DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(VerdeClaro));
+                            menujantar.setBackgroundColor(Color.parseColor(VerdeClaro));
+                        }
                     }
                     tudoSelecionadoJantar = 1;
                     tudoJantar.setBackgroundColor(Color.parseColor(VerdeClaro));
                 } else {
                     for(int i=0; i< EscolhasEmentaJantar.length; i++){
-                        EscolhasEmentaJantar[i] = 0;
-                        menujantar.setBackgroundColor(Color.parseColor(Azul));
-                        if (tudoSelecionadoPA == 0)
-                            DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(Cinzento));
+                        if (DiasComRefeicaoMarcada[i].isEnabled()){
+                            EscolhasEmentaJantar[i] = 0;
+                            menujantar.setBackgroundColor(Color.parseColor(Azul));
+                            if (tudoSelecionadoPA == 0)
+                                DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(Cinzento));
+                        }
                     }
                     tudoSelecionadoJantar = 0;
                     tudoJantar.setBackgroundColor(Color.parseColor(Cinzento));
@@ -191,22 +235,27 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
         switch (v.getId()) {
             case R.id.segfeira:
                 i = 0;
+                CorDiaSemanaSelecionado(i);
                 MostraEmenta(i, EscolhasEmentaCafe[i], EscolhasEmentaJantar[i]);
                 break;
             case R.id.terfeira:
                 i = 1;
+                CorDiaSemanaSelecionado(i);
                 MostraEmenta(i, EscolhasEmentaCafe[i], EscolhasEmentaJantar[i]);
                 break;
             case R.id.quafeira:
                 i = 2;
+                CorDiaSemanaSelecionado(i);
                 MostraEmenta(i, EscolhasEmentaCafe[i], EscolhasEmentaJantar[i]);
                 break;
             case R.id.quifeira:
                 i = 3;
+                CorDiaSemanaSelecionado(i);
                 MostraEmenta(i, EscolhasEmentaCafe[i], EscolhasEmentaJantar[i]);
                 break;
             case R.id.sexfeira:
                 i = 4;
+                CorDiaSemanaSelecionado(i);
                 MostraEmenta(i, EscolhasEmentaCafe[i], EscolhasEmentaJantar[i]);
                 break;
         }
@@ -245,8 +294,10 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
         menualmoco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it = new Intent(Residentes.this, MainActivity.class);
-                it.putExtra("EscolhaEmenta", EscolhasEmentaAlmoco);
+                Intent it = new Intent(Residentes.this, telaAlmoco.class);
+                it.putExtra("EmentaEscolhidaAlmoco", EscolhasEmentaAlmoco);
+                it.putExtra("EmentaEscolhidaPA", EscolhasEmentaCafe);
+                it.putExtra("EmentaEscolhidaJantar", EscolhasEmentaJantar);
                 startActivity(it);
                 finish();
             }
@@ -271,9 +322,26 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
         });
     }
 
+    public void CorDiaSemanaSelecionado(int i){
+        for(int j = 0; j<DiasComRefeicaoMarcada.length; j++){
+            if (j == i)
+                DiasComRefeicaoMarcada[j].setTextColor(Color.parseColor("#000000"));
+            else if (DiasComRefeicaoMarcada[j].isEnabled())
+                DiasComRefeicaoMarcada[j].setTextColor(Color.parseColor("#ffffff"));
+        }
+    }
+
     private void NadaSelecionado(){
         menucafe.setBackgroundColor(Color.parseColor(AmareloClaro));
         menualmoco.setBackgroundColor(Color.parseColor(AmareloEscuro));
         menujantar.setBackgroundColor(Color.parseColor(Azul));
+    }
+
+    public void MudaCorDiasPassados(int i){
+        for(int j = 0; j < i; j++){
+            DiasComRefeicaoMarcada[j].setEnabled(false);
+            DiasComRefeicaoMarcada[j].setBackgroundColor(Color.parseColor(CinzentoClaro));
+            DiasComRefeicaoMarcada[j].setTextColor(Color.parseColor("#ffffff"));
+        }
     }
 }
