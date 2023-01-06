@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">AppCantinaFormandos</string>
+    <string name="ComoMarcarRefeicao"><b>Como marcar uma refeição?</b>\n\n
+        1º  Selecione o dia da semana que pretende marcar a refeição.\n
+        2º  Escolha o tipo de refeição de acordo com a ementa semanal.\n
+        3º  Caso opte por selecionar os dias todos, no lado superior esquerdo existe essa opção.\n
+        4º  Por fim, clique em ATUALIZAR REFEIÇÃO.</string>
 </resources>

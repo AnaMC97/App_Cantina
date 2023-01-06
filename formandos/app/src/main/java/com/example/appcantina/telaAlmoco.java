@@ -27,7 +27,7 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
     String CorVeg = "#96C698";
     String Cinza = "#8C8C8C";
     String CinzentoClaro = "#d8d8d8";
-    TextView textoajudar2;
+    TextView textoAjudar2,ementaSopa, ementaSobremesa;
     int s = 1;
 
     int selecionadoTudoCarne = 0;
@@ -108,6 +108,8 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
         imagemcarne = findViewById(R.id.imgcarne);
         imagempeixe = findViewById(R.id.imgpeixe);
         imagemveg = findViewById(R.id.imgveg);
+        ementaSopa = findViewById(R.id.ementasopa);
+        ementaSobremesa = findViewById(R.id.ementasobremesa);
 
         imagemcarne.setVisibility(View.INVISIBLE);
         imagempeixe.setVisibility(View.INVISIBLE);
@@ -115,6 +117,8 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
         menucarne.setVisibility(View.INVISIBLE);
         menupeixe.setVisibility(View.INVISIBLE);
         menuveg.setVisibility(View.INVISIBLE);
+        ementaSopa.setVisibility(View.INVISIBLE);
+        ementaSobremesa.setVisibility(View.INVISIBLE);
 
         DiasComRefeicaoMarcada[0] = (Button)findViewById(R.id.segfeira);
         DiasComRefeicaoMarcada[1] = (Button)findViewById(R.id.terfeira);
@@ -160,12 +164,14 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
                         }
                     }
                     menucarne1.setBackgroundColor(Color.parseColor(VerdeClaro));
-                    menupeixe1.setBackgroundColor(Color.parseColor(CorPeixe));
-                    menuveg1.setBackgroundColor(Color.parseColor(CorVeg));
+                    menupeixe1.setBackgroundColor(Color.parseColor(Cinza));
+                    menuveg1.setBackgroundColor(Color.parseColor(Cinza));
                     menucarne.setBackgroundColor(Color.parseColor(VerdeClaro));
                     menupeixe.setBackgroundColor(Color.parseColor(CorPeixe));
                     menuveg.setBackgroundColor(Color.parseColor(CorVeg));
                     selecionadoTudoCarne = 1;
+                    selecionadoTudoPeixe = 0;
+                    selecionadoTudoVeg = 0;
                 }else{
                     for (int i = 0; i < EscolhasEmenta.length; i++) {
                         if (DiasComRefeicaoMarcada[i].isEnabled()){
@@ -173,7 +179,7 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
                             EscolhasEmenta[i] = 0;
                         }
                     }
-                    menucarne1.setBackgroundColor(Color.parseColor(CorCarne));
+                    menucarne1.setBackgroundColor(Color.parseColor(Cinza));
                     menucarne.setBackgroundColor(Color.parseColor(CorCarne));
                     selecionadoTudoCarne = 0;
                 }
@@ -193,12 +199,14 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
                         }
                     }
                     menupeixe1.setBackgroundColor(Color.parseColor(VerdeClaro));
-                    menucarne1.setBackgroundColor(Color.parseColor(CorCarne));
-                    menuveg1.setBackgroundColor(Color.parseColor(CorVeg));
+                    menucarne1.setBackgroundColor(Color.parseColor(Cinza));
+                    menuveg1.setBackgroundColor(Color.parseColor(Cinza));
                     menupeixe.setBackgroundColor(Color.parseColor(VerdeClaro));
                     menucarne.setBackgroundColor(Color.parseColor(CorCarne));
                     menuveg.setBackgroundColor(Color.parseColor(CorVeg));
+                    selecionadoTudoCarne = 0;
                     selecionadoTudoPeixe = 2;
+                    selecionadoTudoVeg = 0;
                 }else{
                     for (int i = 0; i < EscolhasEmenta.length; i++) {
                         if (DiasComRefeicaoMarcada[i].isEnabled()){
@@ -206,7 +214,7 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
                             EscolhasEmenta[i] = 0;
                         }
                     }
-                    menupeixe1.setBackgroundColor(Color.parseColor(CorPeixe));
+                    menupeixe1.setBackgroundColor(Color.parseColor(Cinza));
                     menupeixe.setBackgroundColor(Color.parseColor(CorPeixe));
                     selecionadoTudoPeixe = 0;
                 }
@@ -226,11 +234,13 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
                         }
                     }
                     menuveg1.setBackgroundColor(Color.parseColor(VerdeClaro));
-                    menucarne1.setBackgroundColor(Color.parseColor(CorCarne));
-                    menupeixe1.setBackgroundColor(Color.parseColor(CorPeixe));
+                    menucarne1.setBackgroundColor(Color.parseColor(Cinza));
+                    menupeixe1.setBackgroundColor(Color.parseColor(Cinza));
                     menuveg.setBackgroundColor(Color.parseColor(VerdeClaro));
                     menucarne.setBackgroundColor(Color.parseColor(CorCarne));
                     menupeixe.setBackgroundColor(Color.parseColor(CorPeixe));
+                    selecionadoTudoCarne = 0;
+                    selecionadoTudoPeixe = 0;
                     selecionadoTudoVeg = 3;
                 }else{
                     for (int i = 0; i < EscolhasEmenta.length; i++) {
@@ -239,25 +249,27 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
                             EscolhasEmenta[i] = 0;
                         }
                     }
-                    menucarne1.setBackgroundColor(Color.parseColor(CorCarne));
-                    menucarne.setBackgroundColor(Color.parseColor(CorVeg));
+                    menuveg1.setBackgroundColor(Color.parseColor(Cinza));
+                    menuveg.setBackgroundColor(Color.parseColor(CorVeg));
                     selecionadoTudoVeg = 0;
                 }
             }
         });
 
         ajudar2 = findViewById(R.id.ajuda2);
-        textoajudar2 = findViewById(R.id.textoajudar2);
+        textoAjudar2 = findViewById(R.id.textoajudar2);
         ajudar2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 imagemcarne.setVisibility(View.INVISIBLE);
                 imagempeixe.setVisibility(View.INVISIBLE);
                 imagemveg.setVisibility(View.INVISIBLE);
+                ementaSopa.setVisibility(View.INVISIBLE);
+                ementaSobremesa.setVisibility(View.INVISIBLE);
                 menucarne.setVisibility(View.INVISIBLE);
                 menupeixe.setVisibility(View.INVISIBLE);
                 menuveg.setVisibility(View.INVISIBLE);
-                textoajudar2.setVisibility(View.VISIBLE);
+                textoAjudar2.setVisibility(View.VISIBLE);
             }
         });
 
@@ -269,9 +281,12 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
         imagemcarne.setVisibility(View.VISIBLE);
         imagempeixe.setVisibility(View.VISIBLE);
         imagemveg.setVisibility(View.VISIBLE);
+        ementaSopa.setVisibility(View.VISIBLE);
+        ementaSobremesa.setVisibility(View.VISIBLE);
         menucarne.setVisibility(View.VISIBLE);
         menupeixe.setVisibility(View.VISIBLE);
         menuveg.setVisibility(View.VISIBLE);
+        textoAjudar2.setVisibility(View.INVISIBLE);
         switch (v.getId()) {
             case R.id.segfeira:
                 i = 0;

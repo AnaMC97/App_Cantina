@@ -7,14 +7,14 @@
     tools:context=".telaAlmoco">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/ementasopa"
         android:layout_width="352dp"
         android:layout_height="88dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="10dp"
         android:background="#FFDAB9"
         android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/textView2"
+        app:layout_constraintEnd_toStartOf="@+id/ementasobremesa"
         app:layout_constraintHorizontal_bias="0.982"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quafeira" />
@@ -116,7 +116,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/ementasobremesa"
         android:layout_width="352dp"
         android:layout_height="88dp"
         android:layout_marginTop="16dp"
@@ -138,7 +138,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.934"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/ementasobremesa" />
 
     <ImageView
         android:id="@+id/imgcarne"
@@ -212,38 +212,34 @@
         android:id="@+id/voltar"
         android:layout_width="300dp"
         android:layout_height="130dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="196dp"
         android:backgroundTint="#8C8C8C"
         android:onClick="VoltarAtualizar"
         android:text="Atualizar Refeição"
         android:textSize="14pt"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/ementaveg"
-        app:layout_constraintHorizontal_bias="0.29"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/ementaveg1" />
 
     <TextView
         android:id="@+id/textoajudar2"
-        android:layout_width="650dp"
-        android:layout_height="350dp"
-        android:text="Como marcar uma refeição? \n
-        1º  Selecione o dia da semana que pretende marcar a refeição.\n
-        2º  Escolha o tipo de refeição de acordo com a ementa semanal.\n
-        3º  Caso opte por selecionar os dias todos, no lado superior esquerdo existe essa opção.\n
-        4º  Por fim, clique em ATUALIZAR REFEIÇÃO."
+        android:layout_width="720dp"
+        android:layout_height="500dp"
+        android:text="@string/ComoMarcarRefeicao"
         android:textSize="16pt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.765"
+        app:layout_constraintHorizontal_bias="0.805"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.624" />
+        app:layout_constraintVertical_bias="0.753" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="300dp"
         android:layout_height="65dp"
         android:layout_marginStart="76dp"
+        android:layout_marginTop="259dp"
         android:gravity="center"
         android:text="SELECIONAR TUDO"
         android:textColor="@color/black"
@@ -251,8 +247,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/ementacarne1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.972" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/ementapeixe1"

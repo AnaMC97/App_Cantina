@@ -28,7 +28,7 @@
             android:textSize="60pt" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/ementasobremesa"
             android:layout_width="843dp"
             android:layout_height="wrap_content"
             android:text="Por favor, insira cartão no leitor "

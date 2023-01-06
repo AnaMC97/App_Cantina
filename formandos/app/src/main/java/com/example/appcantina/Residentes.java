@@ -19,6 +19,7 @@ import java.util.Calendar;
     Bloquear dias passados - meter a cinzento
     highlight no dia selecionado
     Alterar texto botão de ajuda
+    Alterar background color do verificado
 */
 
 public class Residentes extends AppCompatActivity implements View.OnClickListener {
@@ -264,9 +265,13 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
                 if (EscolhasEmentaCafe[i] == 1){
                     menucafe.setBackgroundColor(Color.parseColor(AmareloClaro));
                     EscolhasEmentaCafe[i] = 0;
+                    imagemcafe.setImageResource(R.drawable.cafe);
                     if (EscolhasEmentaJantar[i] == 0 && EscolhasEmentaCafe[i] == 0)
                         DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor("#8C8C8C"));
                 }else{
+                    imagemcafe.setImageResource(R.drawable.escolhido);
+                    imagemlua.setImageResource(R.drawable.lua);
+                    imagemsun.setImageResource(R.drawable.sun);
                     menucafe.setBackgroundColor(Color.parseColor(VerdeClaro));
                     EscolhasEmentaCafe[i] = 1;
                     DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(VerdeClaro));
@@ -296,10 +301,15 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
                 if (EscolhasEmentaJantar[i] == 1){
                     menujantar.setBackgroundColor(Color.parseColor(Azul));
                     EscolhasEmentaJantar[i] = 0;
+                    imagemlua.setImageResource(R.drawable.lua);
                     if (EscolhasEmentaJantar[i] == 0 && EscolhasEmentaCafe[i] == 0)
                         DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor("#8C8C8C"));
                 }else{
                     menujantar.setBackgroundColor(Color.parseColor(VerdeClaro));
+                    imagemcafe.setImageResource(R.drawable.cafe);
+                    imagemlua.setImageResource(R.drawable.escolhido);
+                    imagemsun.setImageResource(R.drawable.sun);
+
                     EscolhasEmentaJantar[i] = 1;
                     DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(VerdeClaro));
                 }
