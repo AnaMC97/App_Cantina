@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">AppCantinaCozinha</string>
+
+    <string name="AjudaCozinha"><b>Como validar o código?</b>\n\n
+       1º Ao lado direito, encontra-se o contador com a quantidade de refeições reduzidas à medidas que vão sendo servidas.\n
+       2º Ao lado esquerdo, está o painel que mostra o nome do formando e a refeição escolhida pelo mesmo.\n
+       3º O código a ser introduzido será informado pelo formando. Logo que o mesmo estiver validado, apresenta o nome e a refeição marcada.\n
+       4º É possível também efetuar a edição das ementas semanais. \n
+    </string>
+
+    <string name="AjudaEmenta"><b>Como fazer a edição da ementa?</b>\n\n
+       1º Basta escolher o dia semana na parte superior, a qual pretende editar a refeição.\n
+       2º É possivel também efetuar a edição da sopa do dia e a sobremesa, no lado superior esquerdo. \n
+       3º Também podemos fazer a edição, caso necessário, do jantar. \n
+       4º Mas não esqueça de efetuar atualização da ementa antes de sair da página.\n
+    </string>
 </resources>
