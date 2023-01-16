@@ -7,15 +7,22 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/* TODO
+ver se o codigo de ajuda esta a funcionar
+ */
+
 public class Esqueci_Senha extends AppCompatActivity {
 
     private TextView codigo;
     private TextView nif;
+    TextView textoajudar3, txtdigitenif, txtdigitecodigo, digitenif, digitecodigo;
+    Button ajudar3, btnvalidar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +40,8 @@ public class Esqueci_Senha extends AppCompatActivity {
         varcod="000000";
         //---------------------------------------------------------------------------------------------
         //Execução Automática do código
-        codigo=findViewById(R.id.txtcodigo);
-        nif=findViewById(R.id.txtnif);
+        codigo = findViewById(R.id.digitecodigo);
+        nif = findViewById(R.id.digitenif);
         codigo.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -60,9 +67,30 @@ public class Esqueci_Senha extends AppCompatActivity {
                 }
             }
         });
+        //texto de ajuda//
+        txtdigitenif = findViewById(R.id.digitenif);
+        digitenif = findViewById(R.id.digitenif);
+        btnvalidar = findViewById(R.id.btnvalidar);
+        txtdigitecodigo = findViewById(R.id.txtdigitecodigo);
+        digitecodigo = findViewById(R.id.digitecodigo);
 
+        txtdigitenif.setVisibility(View.INVISIBLE);
 
+        ajudar3 = findViewById(R.id.ajuda3);
+        textoajudar3 = findViewById(R.id.textoajuda3);
+        ajudar3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                txtdigitenif.setVisibility(View.INVISIBLE);
+                digitenif.setVisibility(View.INVISIBLE);
+                btnvalidar.setVisibility(View.INVISIBLE);
+                txtdigitecodigo.setVisibility(View.INVISIBLE);
+                digitecodigo.setVisibility(View.INVISIBLE);
+                textoajudar3.setVisibility(View.VISIBLE);
+            }
+        });
     }
+
     public void Voltar (View v){
         Intent it = new Intent(Esqueci_Senha.this,TelaInicial.class);
         startActivity(it);
@@ -80,8 +108,6 @@ public class Esqueci_Senha extends AppCompatActivity {
         finish();
        */
     }
-
-
 
 
 }

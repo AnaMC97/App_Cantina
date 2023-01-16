@@ -5,4 +5,18 @@
         2º  Escolha o tipo de refeição de acordo com a ementa semanal.\n
         3º  Caso opte por selecionar os dias todos, no lado superior esquerdo existe essa opção.\n
         4º  Por fim, clique em ATUALIZAR REFEIÇÃO.</string>
+
+    <string name="ComoMarcarResidentes"><b>Como marcar uma refeição?</b>\n\n
+        1º  Selecione o dia da semana que pretende marcar a refeição.\n
+        2º  É possível marcar todos os dias de pequeno almoço. \n
+        3º  Poderá visualizar a ementa do jantar e escolher se marcar refeição.\n
+        4º  Na tela do almoço, escolha o tipo de refeição de acordo com a ementa semanal.\n
+        5º  Caso opte por selecionar os dias todos, no lado superior esquerdo existe essa opção.\n
+        6º  Por fim, clique em ATUALIZAR REFEIÇÃO.</string>
+
+    <string name="CasoEsquecaSenha"><b>Caso Esqueça o Cartão</b>\n\n
+        1º  Para efetuar a marcação da refeição, insira o seu NIF cadastrado no CENCAL.\n
+        2º  Ao terminar de digitar, prima o botão de validar para que se proceda o envio.\n
+        3º  Aguarde alguns segundos até a chegada do e-mail.\n
+        4º  Por fim, digite o código que recebeu no e-mail.\n </string>
 </resources>

@@ -19,12 +19,12 @@ import java.util.Calendar;
  */
 public class telaAlmoco extends AppCompatActivity implements View.OnClickListener{
 
-    ImageView imagemcarne, imagempeixe, imagemveg;
+    ImageView imagemcarne, imagempeixe, imagemveg, imagemsopa, imagemsobre;
     Button menucarne, menupeixe, menuveg, menucarne1, menupeixe1, menuveg1, ajudar2;
     String VerdeClaro = "#ADE792";
     String CorCarne = "#CCA6A6";
     String CorPeixe = "#90BEE3";
-    String CorVeg = "#96C698";
+    String CorVeg = "#3cb371";
     String Cinza = "#8C8C8C";
     String CinzentoClaro = "#d8d8d8";
     TextView textoAjudar2,ementaSopa, ementaSobremesa;
@@ -108,12 +108,16 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
         imagemcarne = findViewById(R.id.imgcarne);
         imagempeixe = findViewById(R.id.imgpeixe);
         imagemveg = findViewById(R.id.imgveg);
+        imagemsopa = findViewById(R.id.imgsopa);
+        imagemsobre = findViewById(R.id.imgsobre);
         ementaSopa = findViewById(R.id.ementasopa);
         ementaSobremesa = findViewById(R.id.ementasobremesa);
 
         imagemcarne.setVisibility(View.INVISIBLE);
         imagempeixe.setVisibility(View.INVISIBLE);
         imagemveg.setVisibility(View.INVISIBLE);
+        imagemsopa.setVisibility(View.INVISIBLE);
+        imagemsobre.setVisibility(View.INVISIBLE);
         menucarne.setVisibility(View.INVISIBLE);
         menupeixe.setVisibility(View.INVISIBLE);
         menuveg.setVisibility(View.INVISIBLE);
@@ -264,6 +268,8 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
                 imagemcarne.setVisibility(View.INVISIBLE);
                 imagempeixe.setVisibility(View.INVISIBLE);
                 imagemveg.setVisibility(View.INVISIBLE);
+                imagemsopa.setVisibility(View.INVISIBLE);
+                imagemsobre.setVisibility(View.INVISIBLE);
                 ementaSopa.setVisibility(View.INVISIBLE);
                 ementaSobremesa.setVisibility(View.INVISIBLE);
                 menucarne.setVisibility(View.INVISIBLE);
@@ -281,6 +287,8 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
         imagemcarne.setVisibility(View.VISIBLE);
         imagempeixe.setVisibility(View.VISIBLE);
         imagemveg.setVisibility(View.VISIBLE);
+        imagemsopa.setVisibility(View.VISIBLE);
+        imagemsobre.setVisibility(View.VISIBLE);
         ementaSopa.setVisibility(View.VISIBLE);
         ementaSobremesa.setVisibility(View.VISIBLE);
         menucarne.setVisibility(View.VISIBLE);

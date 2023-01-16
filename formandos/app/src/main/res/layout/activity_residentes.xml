@@ -223,16 +223,15 @@
 
     <TextView
         android:id="@+id/textoajuda"
-        android:layout_width="650dp"
-        android:layout_height="350dp"
-        android:text="Aqui vai ser mostrada a ajuda ao utilizador."
-        android:textColor="@color/black"
-        android:textSize="40dp"
+        android:layout_width="720dp"
+        android:layout_height="500dp"
+        android:text="@string/ComoMarcarResidentes"
+        android:textSize="14pt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.77"
+        app:layout_constraintHorizontal_bias="0.796"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.65999997" />
+        app:layout_constraintVertical_bias="0.833" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
