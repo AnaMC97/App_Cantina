@@ -195,11 +195,10 @@ public class Tela_2_Cantina extends AppCompatActivity implements View.OnClickLis
     }
 
     public void Voltar (View v){
-        /*
-        Intent it = new Intent(MainActivity.this, Tela_1_Cantina.class);
+        Intent it = new Intent(Tela_2_Cantina.this, Tela_1_Cantina.class);
         startActivity(it);
         finish();
-         */
+
     }
 
     public void AtualizarEmenta (View v){
