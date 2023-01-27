@@ -263,7 +263,7 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
             }
         });
 
-        getDados();
+        getDados(1);
     }
 
     @Override
@@ -432,34 +432,32 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
         }
     }
 
-    public void getDados() {
-        new BackgroundTask().execute();
-    }
+    public void getDados(int query) { new BackgroundTask(query).execute(); }
 
     class BackgroundTask extends AsyncTask<Void, Void, String> {
+        int query;
+        public BackgroundTask(int get){
+            query = get;
+        }
         String json_url;
 
         @Override
         protected void onPreExecute() {
-            //json_url = "http://192.168.12.176/CencalCantina/ementasSemana2.php";
-            //json_url = "http://10.0.2.2:8080/CencalCantina/ementasSemana2.php";
-            json_url = "http://192.168.12.120/CencalCantina/ementasSemana2.php";
+            switch(query){
+                case 1: json_url = "http://192.168.12.120/CencalCantina/ementasSemana2.php"; break;
+                case 2: json_url = "http://192.168.12.120/CencalCantina/ementasSemana2.php";
+            }
+
         }
 
         @Override
         protected String doInBackground(Void... voids) {
             try {
                 URL url = new URL(json_url);
-                Log.e("teste","teste1");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-                Log.e("teste","teste2");
                 InputStream input = httpURLConnection.getInputStream();
-                Log.e("teste","teste3");
                 BufferedReader br = new BufferedReader(new InputStreamReader(input));
-                Log.e("teste","teste4");
                 StringBuilder stringBuilder = new StringBuilder();
-                Log.e("teste","teste5");
-
                 while ((JSON_STRING =br.readLine())!=null) {
                     stringBuilder.append(JSON_STRING+"\n");
                 }
@@ -468,10 +466,8 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
                 httpURLConnection.disconnect();
                 return stringBuilder.toString().trim();
             } catch (MalformedURLException e) {
-                Log.e("teste","fail1");
                 e.printStackTrace();
             } catch (IOException e) {
-                Log.e("teste","fail2");
                 e.printStackTrace();
             }
             return null;
@@ -485,18 +481,24 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
         @Override
         protected void onPostExecute(String result) {
 
-            TrataJson tj = new TrataJson();
-            List<Ementa> ementas = tj.GetEmentas(result);
-            int i=0;
+            switch (query){
+                case 1:
+                    TrataJson tj = new TrataJson();
+                    List<Ementa> ementas = tj.GetEmentas(result);
+                    int i=0;
 
-            for(Ementa Ementas: ementas){
-                EmentaCarne[i] = Ementas.ementaCarne;
-                EmentaPeixe[i] = Ementas.ementaPeixe;
-                EmentaVegetariano[i] = Ementas.ementaVeg;
-                EmentaSopa[i] = Ementas.ementaSopa;
-                EmentaSobremesa[i] = Ementas.ementaSobremesa;
-                i++;
+                    for(Ementa Ementas: ementas){
+                        EmentaCarne[i] = Ementas.ementaCarne;
+                        EmentaPeixe[i] = Ementas.ementaPeixe;
+                        EmentaVegetariano[i] = Ementas.ementaVeg;
+                        EmentaSopa[i] = Ementas.ementaSopa;
+                        EmentaSobremesa[i] = Ementas.ementaSobremesa;
+                        i++;
+                    }
+                    break;
+                case 2:
             }
+
         }
     }
 }

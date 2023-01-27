@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -13,7 +14,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Calendar;
+import java.util.List;
 
 /* TODO
     Implementar botão de ajuda
@@ -22,6 +31,8 @@ import java.util.Calendar;
  */
 
 public class Tela_2_Cantina extends AppCompatActivity implements View.OnClickListener{
+
+    String JSON_STRING;
 
     String corCarne = "#CCA6A6";
     String corPeixe = "#90BEE3";
@@ -34,53 +45,12 @@ public class Tela_2_Cantina extends AppCompatActivity implements View.OnClickLis
     Button atualizarEmenta;
     ImageButton sopa, sobremesa, sopaSobremesa;
 
-    String [] ementaJantarSemana = new String[]{
-            "Ementa segunda Jantar",
-            "Ementa terça Jantar",
-            "Ementa quarta Jantar",
-            "Ementa quinta Jantar",
-            "Ementa sexta Jantar"
-    };
-
-    String [] ementaCarneSemana = new String[]{
-            "Ementa segunda Carne",
-            "Ementa terça Carne",
-            "Ementa quarta Carne",
-            "Ementa quinta Carne",
-            "Ementa sexta Carne"
-    };
-
-    String [] ementaPeixeSemana = new String[]{
-            "Ementa segunda Peixe",
-            "Ementa terça Peixe",
-            "Ementa quarta Peixe",
-            "Ementa quinta Peixe",
-            "Ementa sexta Peixe"
-    };
-
-    String [] ementaVegSemana = new String[]{
-            "Ementa segunda Veg",
-            "Ementa terça Veg",
-            "Ementa quarta Veg",
-            "Ementa quinta Veg",
-            "Ementa sexta Veg"
-    };
-
-    String [] ementaSopaSemana = new String[]{
-            "Ementa segunda Sopa",
-            "Ementa terça Sopa",
-            "Ementa quarta Sopa",
-            "Ementa quinta Sopa",
-            "Ementa sexta Sopa"
-    };
-
-    String [] ementaSobremesaSemana = new String[]{
-            "Ementa segunda Sobremesa",
-            "Ementa terça Sobremesa",
-            "Ementa quarta Sobremesa",
-            "Ementa quinta Sobremesa",
-            "Ementa sexta Sobremesa"
-    };
+    String [] ementaJantarSemana = new String[5];
+    String [] ementaCarneSemana = new String[5];
+    String [] ementaPeixeSemana = new String[5];
+    String [] ementaVegSemana = new String[5];
+    String [] ementaSopaSemana = new String[5];
+    String [] ementaSobremesaSemana = new String[5];
 
     Button [] DiasSemana = new Button[5];
 
@@ -112,22 +82,10 @@ public class Tela_2_Cantina extends AppCompatActivity implements View.OnClickLis
         ementaJantar.setOnClickListener(this);
 
         Calendar calendario = Calendar.getInstance();
-        int diaSemana = calendario.get(Calendar.DAY_OF_WEEK)-2;
+        int diaSemana = calendario.get(Calendar.DAY_OF_WEEK)-4;
 
-        switch (diaSemana) {
-            case Calendar.TUESDAY:
-                MudaCorDiasPassados(diaSemana);
-                break;
-            case Calendar.WEDNESDAY:
-                MudaCorDiasPassados(diaSemana);
-                break;
-            case Calendar.THURSDAY:
-                MudaCorDiasPassados(diaSemana);
-                break;
-            case Calendar.FRIDAY:
-                MudaCorDiasPassados(diaSemana);
-                break;
-        }
+        MudaCorDiasPassados(diaSemana);
+        getDados(1);
 
     }
 
@@ -221,4 +179,82 @@ public class Tela_2_Cantina extends AppCompatActivity implements View.OnClickLis
             DiasSemana[j].setTextColor(Color.parseColor("#ffffff"));
         }
     }
+
+
+
+    public void getDados(int query) { new BackgroundTask(query).execute(); }
+
+    class BackgroundTask extends AsyncTask<Void, Void, String> {
+        int query;
+
+        public BackgroundTask(int get) {
+            query = get;
+        }
+
+        String json_url;
+
+        @Override
+        protected void onPreExecute() {
+            switch (query) {
+                case 1:
+                    json_url = "http://192.168.12.120/CencalCantina/ementasSemana2.php";
+                    break;
+                case 2:
+                    json_url = "http://192.168.12.120/CencalCantina/ementasSemana2.php";
+            }
+
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            try {
+                URL url = new URL(json_url);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                InputStream input = httpURLConnection.getInputStream();
+                BufferedReader br = new BufferedReader(new InputStreamReader(input));
+                StringBuilder stringBuilder = new StringBuilder();
+                while ((JSON_STRING = br.readLine()) != null) {
+                    stringBuilder.append(JSON_STRING + "\n");
+                }
+                br.close();
+                input.close();
+                httpURLConnection.disconnect();
+                return stringBuilder.toString().trim();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+
+            switch (query) {
+                case 1:
+                    TrataJson tj = new TrataJson();
+                    List<Ementa> ementas = tj.GetEmentas(result);
+                    int i = 0;
+                    for (Ementa Ementas : ementas) {
+                        ementaCarneSemana[i] = Ementas.ementaCarne;
+                        ementaPeixeSemana[i] = Ementas.ementaPeixe;
+                        ementaVegSemana[i] = Ementas.ementaVeg;
+                        ementaSopaSemana[i] = Ementas.ementaSopa;
+                        ementaSobremesaSemana[i] = Ementas.ementaSobremesa;
+                        //ementaJantarSemana[i] = Ementas.ementaJantar;
+                        i++;
+                    }
+                    break;
+                case 2:
+            }
+
+        }
+    }
 }
+

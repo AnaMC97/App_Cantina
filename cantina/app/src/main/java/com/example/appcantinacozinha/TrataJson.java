@@ -1,4 +1,4 @@
-package com.example.appcantina;
+package com.example.appcantinacozinha;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -23,6 +23,7 @@ public class TrataJson {
                 ementa.ementaVeg = jsonObject.getString("veg");
                 ementa.ementaSopa = jsonObject.getString("sopa");
                 ementa.ementaSobremesa = jsonObject.getString("sobremesa");
+                //ementa.ementaJantar = jsonObject.getString("jantar");
                 ementas.add(ementa);
             }
         } catch (Exception e) {
