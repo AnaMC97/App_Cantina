@@ -2,7 +2,9 @@ package com.example.appcantina;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -12,13 +14,22 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Calendar;
+import java.util.List;
 
 /* TODO
 
  */
 public class telaAlmoco extends AppCompatActivity implements View.OnClickListener{
 
+    String JSON_STRING;
     ImageView imagemcarne, imagempeixe, imagemveg, imagemsopa, imagemsobre;
     Button menucarne, menupeixe, menuveg, menucarne1, menupeixe1, menuveg1, ajudar2;
     String VerdeClaro = "#ADE792";
@@ -34,29 +45,11 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
     int selecionadoTudoPeixe = 0;
     int selecionadoTudoVeg = 0;
 
-    String [] EmentaCarne = new String[]{
-            "Ementa segunda carne",
-            "Ementa terça carne",
-            "Ementa quarta carne",
-            "Ementa quinta carne",
-            "Ementa sexta carne"
-    };
-
-    String [] EmentaPeixe = new String[]{
-            "Ementa segunda peixe",
-            "Ementa terça peixe",
-            "Ementa quarta peixe",
-            "Ementa quinta peixe",
-            "Ementa sexta peixe"
-    };
-
-    String [] EmentaVegetariano = new String[]{
-            "Ementa segunda vegetariano",
-            "Ementa terça vegetariano",
-            "Ementa quarta vegetariano",
-            "Ementa quinta vegetariano",
-            "Ementa sexta vegetariano"
-    };
+    String [] EmentaCarne = new String[5];
+    String [] EmentaPeixe = new String[5];
+    String [] EmentaVegetariano = new String[5];
+    String [] EmentaSopa = new String[5];
+    String [] EmentaSobremesa = new String[5];
 
     int [] EscolhasEmenta = new int[]{
             0, 0, 0, 0, 0
@@ -74,9 +67,9 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
 
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_almoco);
-
         // Se for residente
         if(s==1){
             Button voltar = findViewById(R.id.voltar);
@@ -91,6 +84,9 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
             if(it.getIntArrayExtra("EmentaEscolhidaJantar") != null)
                 EscolhasEmentaJantar = it.getIntArrayExtra("EmentaEscolhidaJantar");
         }
+
+        // Faz pedido das ementas à base de dados. É devolvido as ementas para os 5 dias da semana.
+
 
         menucarne = findViewById(R.id.ementacarne);
         menucarne.setOnClickListener(this);
@@ -135,20 +131,8 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
         Calendar calendario = Calendar.getInstance();
         int diaSemana = calendario.get(Calendar.DAY_OF_WEEK)-2;
 
-        switch (diaSemana) {
-            case Calendar.TUESDAY:
-                MudaCorDiasPassados(diaSemana);
-                break;
-            case Calendar.WEDNESDAY:
-                MudaCorDiasPassados(diaSemana);
-                break;
-            case Calendar.THURSDAY:
-                MudaCorDiasPassados(diaSemana);
-                break;
-            case Calendar.FRIDAY:
-                MudaCorDiasPassados(diaSemana);
-                break;
-        }
+        MudaCorDiasPassados(diaSemana);
+
 
         // Altera a cor dos dias da semana para verde quando o residente entra para marcar almoço e já tem algo escolhido
         for (int i = 0; i < EscolhasEmenta.length; i++)
@@ -279,6 +263,7 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
             }
         });
 
+        getDados();
     }
 
     @Override
@@ -339,6 +324,9 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
         menucarne.setText(EmentaCarne[i]);
         menupeixe.setText(EmentaPeixe[i]);
         menuveg.setText(EmentaVegetariano[i]);
+        ementaSopa.setText(EmentaSopa[i]);
+        ementaSobremesa.setText(EmentaSobremesa[i]);
+
     }
 
     public void ClickEmenta(int i){
@@ -441,6 +429,74 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
             DiasComRefeicaoMarcada[j].setEnabled(false);
             DiasComRefeicaoMarcada[j].setBackgroundColor(Color.parseColor(CinzentoClaro));
             DiasComRefeicaoMarcada[j].setTextColor(Color.parseColor("#ffffff"));
+        }
+    }
+
+    public void getDados() {
+        new BackgroundTask().execute();
+    }
+
+    class BackgroundTask extends AsyncTask<Void, Void, String> {
+        String json_url;
+
+        @Override
+        protected void onPreExecute() {
+            //json_url = "http://192.168.12.176/CencalCantina/ementasSemana2.php";
+            //json_url = "http://10.0.2.2:8080/CencalCantina/ementasSemana2.php";
+            json_url = "http://192.168.12.120/CencalCantina/ementasSemana2.php";
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            try {
+                URL url = new URL(json_url);
+                Log.e("teste","teste1");
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                Log.e("teste","teste2");
+                InputStream input = httpURLConnection.getInputStream();
+                Log.e("teste","teste3");
+                BufferedReader br = new BufferedReader(new InputStreamReader(input));
+                Log.e("teste","teste4");
+                StringBuilder stringBuilder = new StringBuilder();
+                Log.e("teste","teste5");
+
+                while ((JSON_STRING =br.readLine())!=null) {
+                    stringBuilder.append(JSON_STRING+"\n");
+                }
+                br.close();
+                input.close();
+                httpURLConnection.disconnect();
+                return stringBuilder.toString().trim();
+            } catch (MalformedURLException e) {
+                Log.e("teste","fail1");
+                e.printStackTrace();
+            } catch (IOException e) {
+                Log.e("teste","fail2");
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+
+            TrataJson tj = new TrataJson();
+            List<Ementa> ementas = tj.GetEmentas(result);
+            int i=0;
+
+            for(Ementa Ementas: ementas){
+                EmentaCarne[i] = Ementas.ementaCarne;
+                EmentaPeixe[i] = Ementas.ementaPeixe;
+                EmentaVegetariano[i] = Ementas.ementaVeg;
+                EmentaSopa[i] = Ementas.ementaSopa;
+                EmentaSobremesa[i] = Ementas.ementaSobremesa;
+                i++;
+            }
         }
     }
 }

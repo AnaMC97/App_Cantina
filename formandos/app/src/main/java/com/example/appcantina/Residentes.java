@@ -111,28 +111,15 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
         menujantar.setVisibility(View.INVISIBLE);
         menucafe.setText(EmentaPequenoAlmoco);
 
-        Calendar calendario = Calendar.getInstance();
-        int diaSemana = calendario.get(Calendar.DAY_OF_WEEK)-2;
-
         for (int i = 0; i < EscolhasEmentaCafe.length; i++)
             if(EscolhasEmentaCafe[i] != 0 || EscolhasEmentaJantar[i] != 0)
                 DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(VerdeClaro));
 
+        Calendar calendario = Calendar.getInstance();
+        int diaSemana = calendario.get(Calendar.DAY_OF_WEEK)-2;
 
-        switch (diaSemana) {
-            case Calendar.TUESDAY:
-                MudaCorDiasPassados(diaSemana);
-                break;
-            case Calendar.WEDNESDAY:
-                MudaCorDiasPassados(diaSemana);
-                break;
-            case Calendar.THURSDAY:
-                MudaCorDiasPassados(diaSemana);
-                break;
-            case Calendar.FRIDAY:
-                MudaCorDiasPassados(diaSemana);
-                break;
-        }
+        MudaCorDiasPassados(diaSemana);
+
 
         tudoPA = findViewById(R.id.TudoPA);
         tudoPA.setOnClickListener(this);
@@ -162,7 +149,6 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
                     tudoSelecionadoPA = 0;
                     tudoPA.setBackgroundColor(Color.parseColor(Cinzento));
                 }
-
             }
         });
 
