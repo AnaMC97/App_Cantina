@@ -16,9 +16,6 @@ import java.util.Calendar;
 
 /* TODO
     Alterar cor das refeições marcadas
-    Bloquear dias passados - meter a cinzento
-    highlight no dia selecionado
-    Alterar texto botão de ajuda
     Alterar background color do verificado
 */
 
