@@ -249,8 +249,12 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
         NadaSelecionado();
         if(escolhaPA == 1)
             menucafe.setBackgroundColor(Color.parseColor(VerdeClaro));
+            //menujantar.setBackgroundColor(Color.parseColor(Azul));
+            //imagemcafe.setImageResource(R.drawable.escolhido);
         if(escolhaJantar == 1)
             menujantar.setBackgroundColor(Color.parseColor(VerdeClaro));
+            //menucafe.setBackgroundColor(Color.parseColor(AmareloClaro));
+            //imagemlua.setImageResource(R.drawable.escolhido);
         menujantar.setText(EmentaJantar[i]);
     }
 
@@ -261,6 +265,7 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
             public void onClick(View view) {
                 if (EscolhasEmentaCafe[i] == 1){
                     menucafe.setBackgroundColor(Color.parseColor(AmareloClaro));
+                    imagemcafe.setImageResource(R.drawable.escolhido);
                     EscolhasEmentaCafe[i] = 0;
                     imagemcafe.setImageResource(R.drawable.cafe);
                     if (EscolhasEmentaJantar[i] == 0 && EscolhasEmentaCafe[i] == 0)
@@ -270,6 +275,7 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
                     imagemlua.setImageResource(R.drawable.lua);
                     imagemsun.setImageResource(R.drawable.sun);
                     menucafe.setBackgroundColor(Color.parseColor(VerdeClaro));
+                    menujantar.setBackgroundColor(Color.parseColor(Azul));
                     EscolhasEmentaCafe[i] = 1;
                     DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(VerdeClaro));
                 }
@@ -303,6 +309,7 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
                         DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor("#8C8C8C"));
                 }else{
                     menujantar.setBackgroundColor(Color.parseColor(VerdeClaro));
+                    menucafe.setBackgroundColor(Color.parseColor(AmareloClaro));
                     imagemcafe.setImageResource(R.drawable.cafe);
                     imagemlua.setImageResource(R.drawable.escolhido);
                     imagemsun.setImageResource(R.drawable.sun);
