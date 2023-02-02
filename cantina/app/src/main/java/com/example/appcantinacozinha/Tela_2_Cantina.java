@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -41,11 +42,12 @@ public class Tela_2_Cantina extends AppCompatActivity implements View.OnClickLis
     String corSobremesa = "#FFC0CB";
     String corJantar = "#98d8f8";
 
-    EditText ementaSopaSobremesa, ementaCarne, ementaPeixe, ementaVeg, ementaJantar;
-    Button atualizarEmenta;
-    ImageButton sopa, sobremesa, sopaSobremesa;
+    EditText ementaSopaSobremesa, ementaCarne, ementaPeixe, ementaVeg;
+    Button atualizarEmenta, ajudar2, sair2;
+    TextView textoajudar2;
+    ImageButton  sopa, sobremesa, sopaSobremesa,imgsopasobremesa, imgcarne, imgpeixe, imgveg;
 
-    String [] ementaJantarSemana = new String[5];
+    //String [] ementaJantarSemana = new String[5];
     String [] ementaCarneSemana = new String[5];
     String [] ementaPeixeSemana = new String[5];
     String [] ementaVegSemana = new String[5];
@@ -70,16 +72,47 @@ public class Tela_2_Cantina extends AppCompatActivity implements View.OnClickLis
         for(int i = 0; i < DiasSemana.length; i++)
             DiasSemana[i].setOnClickListener(this);
 
+        imgsopasobremesa = findViewById(R.id.imgsopasobremesa);
         ementaSopaSobremesa = findViewById(R.id.ementasopasobremesa);
         ementaSopaSobremesa.setOnClickListener(this);
+        imgcarne = findViewById(R.id.imgcarne);
         ementaCarne = findViewById(R.id.ementacarne);
         ementaCarne.setOnClickListener(this);
+        imgpeixe = findViewById(R.id.imgpeixe);
         ementaPeixe = findViewById(R.id.ementapeixe);
         ementaPeixe.setOnClickListener(this);
+        imgveg = findViewById(R.id.imgveg);
         ementaVeg = findViewById(R.id.ementaveg);
         ementaVeg.setOnClickListener(this);
-        ementaJantar = findViewById(R.id.ementajantar);
-        ementaJantar.setOnClickListener(this);
+        sair2 = findViewById(R.id.sair2);
+
+        imgsopasobremesa.setVisibility(View.VISIBLE);
+        ementaSopaSobremesa.setVisibility(View.VISIBLE);
+        imgcarne.setVisibility(View.VISIBLE);
+        ementaCarne.setVisibility(View.VISIBLE);
+        imgpeixe.setVisibility(View.VISIBLE);
+        ementaPeixe.setVisibility(View.VISIBLE);
+        imgveg.setVisibility(View.VISIBLE);
+        ementaVeg.setVisibility(View.VISIBLE);
+        ajudar2.setVisibility(View.VISIBLE);
+        textoajudar2.setVisibility(View.INVISIBLE);
+        sair2.setVisibility(View.INVISIBLE);
+
+        /*ajudar2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ajudar2.setVisibility(View.VISIBLE);
+                imgcarne.setVisibility(View.INVISIBLE);
+                ementaCarne.setVisibility(View.INVISIBLE);
+                imgpeixe.setVisibility(View.INVISIBLE);
+                ementaPeixe.setVisibility(View.INVISIBLE);
+                imgveg.setVisibility(View.INVISIBLE);
+                ementaVeg.setVisibility(View.INVISIBLE);
+                textoajudar2.setVisibility(View.VISIBLE);
+                sair2.setVisibility(View.VISIBLE);
+            }
+        });*/
+
 
         Calendar calendario = Calendar.getInstance();
         int diaSemana = calendario.get(Calendar.DAY_OF_WEEK)-4;
@@ -121,7 +154,6 @@ public class Tela_2_Cantina extends AppCompatActivity implements View.OnClickLis
         ementaCarne.setText(ementaCarneSemana[i]);
         ementaPeixe.setText(ementaPeixeSemana[i]);
         ementaVeg.setText(ementaVegSemana[i]);
-        ementaJantar.setText(ementaJantarSemana[i]);
         ementaSopaSobremesa.setText(ementaSopaSemana[i]);
         sopaSobremesa = findViewById(R.id.imgsopasobremesa);
         sopaSobremesa.setImageResource(R.drawable.sopa);
