@@ -7,10 +7,10 @@
     tools:context=".Tela_2_Cantina">
 
     <Button
-        android:id="@+id/sair2"
+        android:id="@+id/sair3"
         android:layout_width="70dp"
         android:layout_height="80dp"
-        android:layout_marginTop="216dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:backgroundTint="#6ECCAF"
         android:gravity="center"
@@ -20,7 +20,7 @@
         android:textSize="12pt"
         app:cornerRadius="70dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/ajuda2" />
 
     <Button
         android:id="@+id/quafeira"
@@ -107,7 +107,8 @@
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/sopa" />
+        app:srcCompat="@drawable/sopa"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/atualizaSobremesa"
@@ -121,7 +122,8 @@
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/atualizaSopa"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/sobremesa" />
+        app:srcCompat="@drawable/sobremesa"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/Voltar"
@@ -274,7 +276,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textoajudar2"
         android:layout_width="720dp"
         android:layout_height="500dp"
         android:text="@string/AjudaEmenta"
@@ -284,6 +286,6 @@
         app:layout_constraintHorizontal_bias="0.792"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8" />
+        app:layout_constraintVertical_bias="0.666" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

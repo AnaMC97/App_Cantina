@@ -43,8 +43,8 @@ public class Tela_2_Cantina extends AppCompatActivity implements View.OnClickLis
     String corJantar = "#98d8f8";
 
     EditText ementaSopaSobremesa, ementaCarne, ementaPeixe, ementaVeg;
-    Button atualizarEmenta, ajudar2, sair2;
-    TextView textoajudar2;
+    Button ajudar, sair;
+    TextView textoajudar;
     ImageButton  sopa, sobremesa, sopaSobremesa,imgsopasobremesa, imgcarne, imgpeixe, imgveg;
 
     //String [] ementaJantarSemana = new String[5];
@@ -84,7 +84,9 @@ public class Tela_2_Cantina extends AppCompatActivity implements View.OnClickLis
         imgveg = findViewById(R.id.imgveg);
         ementaVeg = findViewById(R.id.ementaveg);
         ementaVeg.setOnClickListener(this);
-        sair2 = findViewById(R.id.sair2);
+        ajudar = findViewById(R.id.ajuda2);
+        textoajudar = findViewById(R.id.textoajudar2);
+        sair = findViewById(R.id.sair3);
 
         imgsopasobremesa.setVisibility(View.VISIBLE);
         ementaSopaSobremesa.setVisibility(View.VISIBLE);
@@ -94,28 +96,31 @@ public class Tela_2_Cantina extends AppCompatActivity implements View.OnClickLis
         ementaPeixe.setVisibility(View.VISIBLE);
         imgveg.setVisibility(View.VISIBLE);
         ementaVeg.setVisibility(View.VISIBLE);
-        ajudar2.setVisibility(View.VISIBLE);
-        textoajudar2.setVisibility(View.INVISIBLE);
-        sair2.setVisibility(View.INVISIBLE);
+        ajudar.setVisibility(View.VISIBLE);
+        textoajudar = findViewById(R.id.textoajudar2);
+        textoajudar.setVisibility(View.INVISIBLE);
+        sair.setVisibility(View.INVISIBLE);
 
-        /*ajudar2.setOnClickListener(new View.OnClickListener() {
+        ajudar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ajudar2.setVisibility(View.VISIBLE);
+                ajudar.setVisibility(View.VISIBLE);
+                imgsopasobremesa.setVisibility(View.INVISIBLE);
+                ementaSopaSobremesa.setVisibility(View.INVISIBLE);
                 imgcarne.setVisibility(View.INVISIBLE);
                 ementaCarne.setVisibility(View.INVISIBLE);
                 imgpeixe.setVisibility(View.INVISIBLE);
                 ementaPeixe.setVisibility(View.INVISIBLE);
                 imgveg.setVisibility(View.INVISIBLE);
                 ementaVeg.setVisibility(View.INVISIBLE);
-                textoajudar2.setVisibility(View.VISIBLE);
-                sair2.setVisibility(View.VISIBLE);
+                textoajudar.setVisibility(View.VISIBLE);
+                sair.setVisibility(View.VISIBLE);
             }
-        });*/
+        });
 
 
         Calendar calendario = Calendar.getInstance();
-        int diaSemana = calendario.get(Calendar.DAY_OF_WEEK)-4;
+        int diaSemana = calendario.get(Calendar.DAY_OF_WEEK)-2;
 
         MudaCorDiasPassados(diaSemana);
         getDados(1);
@@ -287,6 +292,12 @@ public class Tela_2_Cantina extends AppCompatActivity implements View.OnClickLis
             }
 
         }
+
+    }
+    public void sair(View v){
+        Intent it = new Intent(Tela_2_Cantina.this, Tela_2_Cantina.class);
+        startActivity(it);
+        finish();
     }
 }
 
