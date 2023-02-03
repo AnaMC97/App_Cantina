@@ -6,6 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".telaAlmoco">
 
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="70dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="580dp"
+        android:backgroundTint="#6ECCAF"
+        android:gravity="center"
+        android:paddingLeft="25dp"
+        app:cornerRadius="10dp"
+        app:icon="@drawable/ic_baseline_arrow_forward_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toEndOf="@+id/sexfeira"
+        app:layout_constraintTop_toBottomOf="@+id/ajuda"
+        app:layout_constraintVertical_bias="0.0" />
+
     <TextView
         android:id="@+id/ementasopa"
         android:layout_width="250dp"
@@ -101,7 +119,7 @@
         android:id="@+id/ajuda2"
         android:layout_width="70dp"
         android:layout_height="80dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="68dp"
         android:layout_marginEnd="16dp"
         android:backgroundTint="#6ECCAF"
         android:onClick="onClick"

@@ -15,8 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Calendar;
 
 /* TODO
-    Alterar cor das refeições marcadas
-    Alterar background color do verificado
+    https://stackoverflow.com/questions/21544091/issue-in-getting-next-week-value-in-button-click-android
+    https://stackoverflow.com/questions/10511423/android-repeat-action-on-pressing-and-holding-a-button
 */
 
 public class Residentes extends AppCompatActivity implements View.OnClickListener {
@@ -193,6 +193,7 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
                 textoajudar.setVisibility(View.VISIBLE);
             }
         });
+
     }
 
     @Override
