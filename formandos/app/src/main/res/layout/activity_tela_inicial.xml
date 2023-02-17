@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     tools:context=".TelaInicial">
 
+
     <LinearLayout
         android:layout_width="1113dp"
         android:layout_height="803dp"
@@ -21,6 +22,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
+        <EditText
+            android:id="@+id/TagID"
+            android:layout_width="725dp"
+            android:layout_height="63dp"
+            android:ems="10"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:textColor="@color/white"
+            android:background="@android:color/transparent"
+            tools:ignore="SpeakableTextPresentCheck" />
+
         <TextView
             android:id="@+id/textoajudar2"
             android:layout_width="match_parent"
@@ -32,8 +44,13 @@
 
         <TextView
             android:id="@+id/ementasobremesa"
+<<<<<<< HEAD:formandos/app/src/main/res/layout/activity_teste_btn.xml
             android:layout_width="843dp"
             android:layout_height="151dp"
+=======
+            android:layout_width="861dp"
+            android:layout_height="92dp"
+>>>>>>> c9630d24509495344ce208cb1e51da7a69a25c30:formandos/app/src/main/res/layout/activity_tela_inicial.xml
             android:text="Por favor, insira cartão no leitor "
             android:textAlignment="center"
             android:textSize="25pt" />
@@ -48,7 +65,10 @@
             android:layout_width="501dp"
             android:layout_height="109dp"
             android:layout_margin="10dp"
+<<<<<<< HEAD:formandos/app/src/main/res/layout/activity_teste_btn.xml
             android:backgroundTint="#6ECCAF"
+=======
+>>>>>>> c9630d24509495344ce208cb1e51da7a69a25c30:formandos/app/src/main/res/layout/activity_tela_inicial.xml
             android:onClick="EsqueciSenha"
             android:text="Esqueci-me do cartão"
             android:textAlignment="center"

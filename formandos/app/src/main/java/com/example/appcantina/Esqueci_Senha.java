@@ -1,21 +1,19 @@
 package com.example.appcantina;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.PrecomputedText;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+<<<<<<< HEAD
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,6 +26,8 @@ import java.util.Random;
 import javax.microedition.khronos.egl.EGLSurface;
 import javax.xml.transform.Result;
 
+=======
+>>>>>>> c9630d24509495344ce208cb1e51da7a69a25c30
 /* TODO
 ver se o codigo de ajuda esta a funcionar
  */
@@ -37,11 +37,19 @@ public class Esqueci_Senha extends AppCompatActivity {
     private TextView codigo;
     private TextView nif;
     TextView textoajudar, txtdigitenif, txtdigitecodigo, digitenif, digitecodigo;
+<<<<<<< HEAD
     Button ajudar, validar, voltar, sair;
+=======
+    Button ajudar, btnvalidar;
+>>>>>>> c9630d24509495344ce208cb1e51da7a69a25c30
 
-   String JSON_STRING;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+<<<<<<< HEAD
+=======
+        //--------------------------------------------------------------------------------------------
+        //tirar bordas
+>>>>>>> c9630d24509495344ce208cb1e51da7a69a25c30
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
@@ -74,7 +82,6 @@ public class Esqueci_Senha extends AppCompatActivity {
                 if (conteudo.length() == 6) {
                     if (conteudo.equals(varcod)) {
                         Toast.makeText(Esqueci_Senha.this, "VALIDADO", Toast.LENGTH_SHORT).show();
-                        //DBHelper.GeraCodigo(conteudo);
                         Intent it = new Intent(Esqueci_Senha.this, telaAlmoco.class);
                         startActivity(it);
                         finish();
@@ -82,7 +89,14 @@ public class Esqueci_Senha extends AppCompatActivity {
                 }
             }
         });
+        //texto de ajuda//
+        txtdigitenif = findViewById(R.id.digitenif);
+        digitenif = findViewById(R.id.digitenif);
+        btnvalidar = findViewById(R.id.btnvalidar);
+        txtdigitecodigo = findViewById(R.id.txtdigitecodigo);
+        digitecodigo = findViewById(R.id.digitecodigo);
 
+<<<<<<< HEAD
         ajudar = findViewById(R.id.ajuda3);
         textoajudar = findViewById(R.id.textoajuda3);
         txtdigitenif = findViewById(R.id.txtdigitenif);
@@ -186,3 +200,43 @@ public class Esqueci_Senha extends AppCompatActivity {
         finish();
     }
     }
+=======
+        txtdigitenif.setVisibility(View.INVISIBLE);
+
+        ajudar = findViewById(R.id.ajuda3);
+        textoajudar = findViewById(R.id.textoajuda3);
+        ajudar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                txtdigitenif.setVisibility(View.INVISIBLE);
+                digitenif.setVisibility(View.INVISIBLE);
+                btnvalidar.setVisibility(View.INVISIBLE);
+                txtdigitecodigo.setVisibility(View.INVISIBLE);
+                digitecodigo.setVisibility(View.INVISIBLE);
+                textoajudar.setVisibility(View.VISIBLE);
+            }
+        });
+    }
+
+    public void Voltar (View v){
+        Intent it = new Intent(Esqueci_Senha.this,TelaInicial.class);
+        startActivity(it);
+        finish();
+    }
+    public void Validar (View v){
+        if(nif.length()==9) {
+            //se sim liga a base de dados
+            Toast.makeText(Esqueci_Senha.this, "VALIDADO VAI FILHÃOO", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(this, "NIF INCORRETO, POR FAVOR VERIFIQUE OS DADOS INSERIDOS", Toast.LENGTH_SHORT).show();
+        }
+
+        Intent it = new Intent(Esqueci_Senha.this,Residentes.class);
+        startActivity(it);
+        finish();
+
+    }
+
+
+}
+>>>>>>> c9630d24509495344ce208cb1e51da7a69a25c30
