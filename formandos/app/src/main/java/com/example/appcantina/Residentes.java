@@ -2,7 +2,9 @@ package com.example.appcantina;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -12,7 +14,26 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 /* TODO
     Alterar cor das refeições marcadas
@@ -22,7 +43,7 @@ import java.util.Calendar;
 public class Residentes extends AppCompatActivity implements View.OnClickListener {
 
     ImageButton imagemcafe, imagemsun, imagemlua;
-    Button menucafe, menualmoco, menujantar, ajudar, tudoPA, tudoJantar;
+    Button menucafe, menualmoco, menujantar, ajudar, tudoPA, tudoJantar, atualizarRefeicao;
     TextView textoajudar;
 
     String VerdeClaro = "#ADE792";
@@ -59,7 +80,8 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
 
     int tudoSelecionadoPA = 0;
     int tudoSelecionadoJantar = 0;
-
+    int alunoRFID = 1;
+    int diaSemana;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,10 +135,11 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
                 DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(VerdeClaro));
 
         Calendar calendario = Calendar.getInstance();
-        int diaSemana = calendario.get(Calendar.DAY_OF_WEEK)-2;
+        diaSemana = calendario.get(Calendar.DAY_OF_WEEK)-2;
 
         MudaCorDiasPassados(diaSemana);
 
+        atualizarRefeicao = findViewById(R.id.atualizarrefeicoes);
 
         tudoPA = findViewById(R.id.TudoPA);
         tudoPA.setOnClickListener(this);

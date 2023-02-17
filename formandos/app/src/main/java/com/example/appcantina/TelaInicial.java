@@ -22,7 +22,7 @@ public class TelaInicial extends AppCompatActivity {
         setContentView(R.layout.activity_teste_btn);
     }
     public void EsqueciSenha(View v){
-        Intent it = new Intent(TelaInicial.this,Residentes.class);
+        Intent it = new Intent(TelaInicial.this,telaAlmoco.class);
         startActivity(it);
         finish();
     }

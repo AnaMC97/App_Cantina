@@ -14,6 +14,16 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,12 +32,12 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Calendar;
-import java.util.List;
+import java.util.Date;
 
 /* TODO
 
  */
-public class telaAlmoco extends AppCompatActivity implements View.OnClickListener{
+public class telaAlmoco extends AppCompatActivity implements View.OnClickListener {
 
     String JSON_STRING;
     ImageView imagemcarne, imagempeixe, imagemveg, imagemsopa, imagemsobre;
@@ -38,27 +48,31 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
     String CorVeg = "#3cb371";
     String Cinza = "#8C8C8C";
     String CinzentoClaro = "#d8d8d8";
-    TextView textoAjudar2,ementaSopa, ementaSobremesa;
-    int s = 1;
+    TextView textoAjudar2, ementaSopa, ementaSobremesa;
+    String alunoRFID = "3280166432";
+
+    int diaSemana;
+
+    //TODO é suposto receber a info da BD para saber se é residente ou não.
+    int s = 0;
 
     int selecionadoTudoCarne = 0;
     int selecionadoTudoPeixe = 0;
     int selecionadoTudoVeg = 0;
 
-    String [] EmentaCarne = new String[5];
-    String [] EmentaPeixe = new String[5];
-    String [] EmentaVegetariano = new String[5];
-    String [] EmentaSopa = new String[5];
-    String [] EmentaSobremesa = new String[5];
+    // TODO receber info da BD referente às escolhas já feitas para a semana
 
-    int [] EscolhasEmenta = new int[]{
+    public int[] EscolhasEmenta = new int[]{
             0, 0, 0, 0, 0
     };
 
-    int [] EscolhasEmentaCafe = new int[5];
-    int [] EscolhasEmentaJantar = new int[5];
+    int[] EscolhasEmentaCafe = new int[5];
+    int[] EscolhasEmentaJantar = new int[5];
 
-    Button [] DiasComRefeicaoMarcada = new Button[5];
+    Button[] DiasComRefeicaoMarcada = new Button[5];
+
+    Ementa ementa;
+    Calendar calendario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,17 +85,17 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_almoco);
         // Se for residente
-        if(s==1){
+        if (s == 1) {
             Button voltar = findViewById(R.id.voltar);
             voltar.setText("Voltar");
             Intent it = getIntent();
-            if(it.getIntArrayExtra("EmentaEscolhidaAlmoco") != null)
+            if (it.getIntArrayExtra("EmentaEscolhidaAlmoco") != null)
                 EscolhasEmenta = it.getIntArrayExtra("EmentaEscolhidaAlmoco");
 
-            if(it.getIntArrayExtra("EmentaEscolhidaPA") != null)
+            if (it.getIntArrayExtra("EmentaEscolhidaPA") != null)
                 EscolhasEmentaCafe = it.getIntArrayExtra("EmentaEscolhidaPA");
 
-            if(it.getIntArrayExtra("EmentaEscolhidaJantar") != null)
+            if (it.getIntArrayExtra("EmentaEscolhidaJantar") != null)
                 EscolhasEmentaJantar = it.getIntArrayExtra("EmentaEscolhidaJantar");
         }
 
@@ -94,12 +108,6 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
         menupeixe.setOnClickListener(this);
         menuveg = findViewById(R.id.ementaveg);
         menuveg.setOnClickListener(this);
-
-        //botoes para selecionar todos os dias
-        menupeixe1 = findViewById(R.id.ementapeixe1);
-        menupeixe1.setOnClickListener(this);
-        menuveg1 = findViewById(R.id.ementaveg1);
-        menuveg1.setOnClickListener(this);
 
         imagemcarne = findViewById(R.id.imgcarne);
         imagempeixe = findViewById(R.id.imgpeixe);
@@ -120,23 +128,23 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
         ementaSopa.setVisibility(View.INVISIBLE);
         ementaSobremesa.setVisibility(View.INVISIBLE);
 
-        DiasComRefeicaoMarcada[0] = (Button)findViewById(R.id.segfeira);
-        DiasComRefeicaoMarcada[1] = (Button)findViewById(R.id.terfeira);
-        DiasComRefeicaoMarcada[2] = (Button)findViewById(R.id.quafeira);
-        DiasComRefeicaoMarcada[3] = (Button)findViewById(R.id.quifeira);
-        DiasComRefeicaoMarcada[4] = (Button)findViewById(R.id.sexfeira);
-        for(int i = 0; i < DiasComRefeicaoMarcada.length; i++)
+        DiasComRefeicaoMarcada[0] = (Button) findViewById(R.id.segfeira);
+        DiasComRefeicaoMarcada[1] = (Button) findViewById(R.id.terfeira);
+        DiasComRefeicaoMarcada[2] = (Button) findViewById(R.id.quafeira);
+        DiasComRefeicaoMarcada[3] = (Button) findViewById(R.id.quifeira);
+        DiasComRefeicaoMarcada[4] = (Button) findViewById(R.id.sexfeira);
+        for (int i = 0; i < DiasComRefeicaoMarcada.length; i++)
             DiasComRefeicaoMarcada[i].setOnClickListener(this);
 
-        Calendar calendario = Calendar.getInstance();
-        int diaSemana = calendario.get(Calendar.DAY_OF_WEEK)-2;
+        calendario = Calendar.getInstance();
+        int diaSemana = calendario.get(Calendar.DAY_OF_WEEK) - 2;
 
         MudaCorDiasPassados(diaSemana);
 
 
         // Altera a cor dos dias da semana para verde quando o residente entra para marcar almoço e já tem algo escolhido
         for (int i = 0; i < EscolhasEmenta.length; i++)
-            if(EscolhasEmenta[i] != 0)
+            if (EscolhasEmenta[i] != 0)
                 DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(VerdeClaro));
 
         menucarne1 = findViewById(R.id.ementacarne1);
@@ -144,9 +152,9 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
         menucarne1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (selecionadoTudoCarne == 0){
+                if (selecionadoTudoCarne == 0) {
                     for (int i = 0; i < EscolhasEmenta.length; i++) {
-                        if (DiasComRefeicaoMarcada[i].isEnabled()){
+                        if (DiasComRefeicaoMarcada[i].isEnabled()) {
                             DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(VerdeClaro));
                             EscolhasEmenta[i] = 1;
                         }
@@ -160,9 +168,9 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
                     selecionadoTudoCarne = 1;
                     selecionadoTudoPeixe = 0;
                     selecionadoTudoVeg = 0;
-                }else{
+                } else {
                     for (int i = 0; i < EscolhasEmenta.length; i++) {
-                        if (DiasComRefeicaoMarcada[i].isEnabled()){
+                        if (DiasComRefeicaoMarcada[i].isEnabled()) {
                             DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(Cinza));
                             EscolhasEmenta[i] = 0;
                         }
@@ -181,7 +189,7 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
             public void onClick(View view) {
                 if (selecionadoTudoPeixe == 0) {
                     for (int i = 0; i < EscolhasEmenta.length; i++) {
-                        if (DiasComRefeicaoMarcada[i].isEnabled()){
+                        if (DiasComRefeicaoMarcada[i].isEnabled()) {
                             DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(VerdeClaro));
                             EscolhasEmenta[i] = 2;
                         }
@@ -195,9 +203,9 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
                     selecionadoTudoCarne = 0;
                     selecionadoTudoPeixe = 2;
                     selecionadoTudoVeg = 0;
-                }else{
+                } else {
                     for (int i = 0; i < EscolhasEmenta.length; i++) {
-                        if (DiasComRefeicaoMarcada[i].isEnabled()){
+                        if (DiasComRefeicaoMarcada[i].isEnabled()) {
                             DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(Cinza));
                             EscolhasEmenta[i] = 0;
                         }
@@ -214,9 +222,9 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
         menuveg1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(selecionadoTudoVeg == 0 ) {
+                if (selecionadoTudoVeg == 0) {
                     for (int i = 0; i < EscolhasEmenta.length; i++) {
-                        if (DiasComRefeicaoMarcada[i].isEnabled()){
+                        if (DiasComRefeicaoMarcada[i].isEnabled()) {
                             DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(VerdeClaro));
                             EscolhasEmenta[i] = 3;
                         }
@@ -230,9 +238,9 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
                     selecionadoTudoCarne = 0;
                     selecionadoTudoPeixe = 0;
                     selecionadoTudoVeg = 3;
-                }else{
+                } else {
                     for (int i = 0; i < EscolhasEmenta.length; i++) {
-                        if (DiasComRefeicaoMarcada[i].isEnabled()){
+                        if (DiasComRefeicaoMarcada[i].isEnabled()) {
                             DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(Cinza));
                             EscolhasEmenta[i] = 0;
                         }
@@ -306,8 +314,8 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
         ClickEmenta(i);
     }
 
-    public void MostraEmenta(int i, int escolha){
-        switch (escolha){
+    public void MostraEmenta(int i, int escolha) {
+        switch (escolha) {
             case 1:
                 CarneSelecionada();
                 break;
@@ -321,24 +329,24 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
                 NadaSelecionado();
                 break;
         }
-        menucarne.setText(EmentaCarne[i]);
-        menupeixe.setText(EmentaPeixe[i]);
-        menuveg.setText(EmentaVegetariano[i]);
-        ementaSopa.setText(EmentaSopa[i]);
-        ementaSobremesa.setText(EmentaSobremesa[i]);
+        menucarne.setText(ementa.EmentaCarne[i]);
+        menupeixe.setText(ementa.EmentaPeixe[i]);
+        menuveg.setText(ementa.EmentaVegetariano[i]);
+        ementaSopa.setText(ementa.EmentaSopa[i]);
+        ementaSobremesa.setText(ementa.EmentaSobremesa[i]);
 
     }
 
-    public void ClickEmenta(int i){
+    public void ClickEmenta(int i) {
 
         menucarne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (EscolhasEmenta[i] == 1){
+                if (EscolhasEmenta[i] == 1) {
                     NadaSelecionado();
                     EscolhasEmenta[i] = 0;
                     DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(Cinza));
-                }else{
+                } else {
                     CarneSelecionada();
                     EscolhasEmenta[i] = 1;
                     DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(VerdeClaro));
@@ -349,11 +357,11 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
         menupeixe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (EscolhasEmenta[i] == 2){
+                if (EscolhasEmenta[i] == 2) {
                     NadaSelecionado();
                     EscolhasEmenta[i] = 0;
                     DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(Cinza));
-                }else{
+                } else {
                     PeixeSelecionado();
                     EscolhasEmenta[i] = 2;
                     DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(VerdeClaro));
@@ -364,11 +372,11 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
         menuveg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (EscolhasEmenta[i] == 3){
+                if (EscolhasEmenta[i] == 3) {
                     NadaSelecionado();
                     EscolhasEmenta[i] = 0;
                     DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(Cinza));
-                }else{
+                } else {
                     VegSelecionado();
                     EscolhasEmenta[i] = 3;
                     DiasComRefeicaoMarcada[i].setBackgroundColor(Color.parseColor(VerdeClaro));
@@ -377,32 +385,32 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
         });
     }
 
-    private void CarneSelecionada(){
+    private void CarneSelecionada() {
         menucarne.setBackgroundColor(Color.parseColor(VerdeClaro));
         menupeixe.setBackgroundColor(Color.parseColor(CorPeixe));
         menuveg.setBackgroundColor(Color.parseColor(CorVeg));
     }
 
-    private void PeixeSelecionado(){
+    private void PeixeSelecionado() {
         menucarne.setBackgroundColor(Color.parseColor(CorCarne));
         menupeixe.setBackgroundColor(Color.parseColor(VerdeClaro));
         menuveg.setBackgroundColor(Color.parseColor(CorVeg));
     }
 
-    private void VegSelecionado(){
+    private void VegSelecionado() {
         menucarne.setBackgroundColor(Color.parseColor(CorCarne));
         menupeixe.setBackgroundColor(Color.parseColor(CorPeixe));
         menuveg.setBackgroundColor(Color.parseColor(VerdeClaro));
     }
 
-    private void NadaSelecionado(){
+    private void NadaSelecionado() {
         menucarne.setBackgroundColor(Color.parseColor(CorCarne));
         menupeixe.setBackgroundColor(Color.parseColor(CorPeixe));
         menuveg.setBackgroundColor(Color.parseColor(CorVeg));
     }
 
-    public void CorDiaSemanaSelecionado(int i){
-        for(int j = 0; j<DiasComRefeicaoMarcada.length; j++){
+    public void CorDiaSemanaSelecionado(int i) {
+        for (int j = 0; j < DiasComRefeicaoMarcada.length; j++) {
             if (j == i)
                 DiasComRefeicaoMarcada[j].setTextColor(Color.parseColor("#000000"));
             else if (DiasComRefeicaoMarcada[j].isEnabled())
@@ -410,11 +418,15 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
         }
     }
 
-    public void VoltarAtualizar (View v) {
-        if(s == 0){
+    public void VoltarAtualizar(View v) {
+        if (s == 0) {
+            Calendar calendario = Calendar.getInstance();
+            diaSemana = calendario.get(Calendar.DAY_OF_WEEK)-2;
+            Ementa ementa = new Ementa(telaAlmoco.this, alunoRFID, diaSemana);
+            ementa.SendEmentasResidentes(EscolhasEmenta);
 
-            //comunica c base de dados
-        }else {
+            //SendEmentasResidentes(alunoRFID, diaSemana);
+        } else {
             Intent it = new Intent(telaAlmoco.this, Residentes.class);
             it.putExtra("EmentaEscolhidaAlmoco", EscolhasEmenta);
             it.putExtra("EmentaEscolhidaPA", EscolhasEmentaCafe);
@@ -424,30 +436,29 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
         }
     }
 
-    public void MudaCorDiasPassados(int i){
-        for(int j = 0; j < i; j++){
+    public void MudaCorDiasPassados(int i) {
+        for (int j = 0; j < i; j++) {
             DiasComRefeicaoMarcada[j].setEnabled(false);
             DiasComRefeicaoMarcada[j].setBackgroundColor(Color.parseColor(CinzentoClaro));
             DiasComRefeicaoMarcada[j].setTextColor(Color.parseColor("#ffffff"));
         }
     }
 
-    public void getDados(int query) { new BackgroundTask(query).execute(); }
+    public void getDados(int query) {
+        new BackgroundTask(query).execute();
+    }
 
     class BackgroundTask extends AsyncTask<Void, Void, String> {
         int query;
-        public BackgroundTask(int get){
+
+        public BackgroundTask(int get) {
             query = get;
         }
         String json_url;
 
         @Override
         protected void onPreExecute() {
-            switch(query){
-                case 1: json_url = "http://192.168.12.120/CencalCantina/ementasSemana2.php"; break;
-                case 2: json_url = "http://192.168.12.120/CencalCantina/ementasSemana2.php";
-            }
-
+              json_url = "http://192.168.12.120/CencalCantina/ementasSemana2.php";
         }
 
         @Override
@@ -458,8 +469,8 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
                 InputStream input = httpURLConnection.getInputStream();
                 BufferedReader br = new BufferedReader(new InputStreamReader(input));
                 StringBuilder stringBuilder = new StringBuilder();
-                while ((JSON_STRING =br.readLine())!=null) {
-                    stringBuilder.append(JSON_STRING+"\n");
+                while ((JSON_STRING = br.readLine()) != null) {
+                    stringBuilder.append(JSON_STRING + "\n");
                 }
                 br.close();
                 input.close();
@@ -480,25 +491,9 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
 
         @Override
         protected void onPostExecute(String result) {
-
-            switch (query){
-                case 1:
-                    TrataJson tj = new TrataJson();
-                    List<Ementa> ementas = tj.GetEmentas(result);
-                    int i=0;
-
-                    for(Ementa Ementas: ementas){
-                        EmentaCarne[i] = Ementas.ementaCarne;
-                        EmentaPeixe[i] = Ementas.ementaPeixe;
-                        EmentaVegetariano[i] = Ementas.ementaVeg;
-                        EmentaSopa[i] = Ementas.ementaSopa;
-                        EmentaSobremesa[i] = Ementas.ementaSobremesa;
-                        i++;
-                    }
-                    break;
-                case 2:
-            }
-
+                TrataJson tj = new TrataJson();
+                ementa = tj.GetEmentas(result);
         }
     }
+
 }
