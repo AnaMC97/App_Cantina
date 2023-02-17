@@ -279,6 +279,7 @@
         android:id="@+id/textoajudar2"
         android:layout_width="720dp"
         android:layout_height="500dp"
+        android:gravity="center"
         android:text="@string/AjudaEmenta"
         android:textSize="17pt"
         app:layout_constraintBottom_toBottomOf="parent"

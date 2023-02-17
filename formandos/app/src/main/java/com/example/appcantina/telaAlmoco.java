@@ -31,14 +31,14 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
 
     String JSON_STRING;
     ImageView imagemcarne, imagempeixe, imagemveg, imagemsopa, imagemsobre;
-    Button menucarne, menupeixe, menuveg, menucarne1, menupeixe1, menuveg1, ajudar2;
+    Button menucarne, menupeixe, menuveg, menucarne1, menupeixe1, menuveg1, ajudar;
     String VerdeClaro = "#ADE792";
     String CorCarne = "#CCA6A6";
     String CorPeixe = "#90BEE3";
     String CorVeg = "#3cb371";
     String Cinza = "#8C8C8C";
     String CinzentoClaro = "#d8d8d8";
-    TextView textoAjudar2,ementaSopa, ementaSobremesa;
+    TextView textoajudar,ementaSopa, ementaSobremesa;
     int s = 1;
 
     int selecionadoTudoCarne = 0;
@@ -244,9 +244,9 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
             }
         });
 
-        ajudar2 = findViewById(R.id.ajuda2);
-        textoAjudar2 = findViewById(R.id.textoajudar2);
-        ajudar2.setOnClickListener(new View.OnClickListener() {
+        ajudar = findViewById(R.id.ajuda2);
+        textoajudar = findViewById(R.id.textoajudar2);
+        ajudar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 imagemcarne.setVisibility(View.INVISIBLE);
@@ -259,7 +259,7 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
                 menucarne.setVisibility(View.INVISIBLE);
                 menupeixe.setVisibility(View.INVISIBLE);
                 menuveg.setVisibility(View.INVISIBLE);
-                textoAjudar2.setVisibility(View.VISIBLE);
+                textoajudar.setVisibility(View.VISIBLE);
             }
         });
 
@@ -279,7 +279,7 @@ public class telaAlmoco extends AppCompatActivity implements View.OnClickListene
         menucarne.setVisibility(View.VISIBLE);
         menupeixe.setVisibility(View.VISIBLE);
         menuveg.setVisibility(View.VISIBLE);
-        textoAjudar2.setVisibility(View.INVISIBLE);
+        textoajudar.setVisibility(View.INVISIBLE);
         switch (v.getId()) {
             case R.id.segfeira:
                 i = 0;

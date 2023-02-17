@@ -11,12 +11,15 @@
         android:layout_height="803dp"
         android:layout_marginStart="107dp"
         android:layout_marginEnd="60dp"
+        android:layout_marginBottom="16dp"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/textoajudar2"
@@ -30,7 +33,7 @@
         <TextView
             android:id="@+id/ementasobremesa"
             android:layout_width="843dp"
-            android:layout_height="wrap_content"
+            android:layout_height="151dp"
             android:text="Por favor, insira cartão no leitor "
             android:textAlignment="center"
             android:textSize="25pt" />
@@ -43,9 +46,9 @@
 
         <Button
             android:layout_width="501dp"
-            android:layout_height="106dp"
+            android:layout_height="109dp"
             android:layout_margin="10dp"
-            android:background="@drawable/custom_edit"
+            android:backgroundTint="#6ECCAF"
             android:onClick="EsqueciSenha"
             android:text="Esqueci-me do cartão"
             android:textAlignment="center"

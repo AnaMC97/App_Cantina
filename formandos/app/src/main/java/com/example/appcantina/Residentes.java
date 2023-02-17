@@ -9,10 +9,12 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Calendar;
+import java.util.Date;
 
 /* TODO
     https://stackoverflow.com/questions/21544091/issue-in-getting-next-week-value-in-button-click-android
@@ -194,6 +196,16 @@ public class Residentes extends AppCompatActivity implements View.OnClickListene
             }
         });
 
+        Button nextWeekButton = findViewById(R.id.nextweek);
+        nextWeekButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar calendar = Calendar.getInstance();
+                calendar.add(Calendar.DATE, 5);
+                Date nextWeek = calendar.getTime();
+                Toast.makeText(Residentes.this, "Próxima Semana" + nextWeek.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

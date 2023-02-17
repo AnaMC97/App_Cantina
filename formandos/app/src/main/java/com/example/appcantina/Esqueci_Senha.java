@@ -25,6 +25,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Random;
 
+import javax.microedition.khronos.egl.EGLSurface;
 import javax.xml.transform.Result;
 
 /* TODO
@@ -35,28 +36,26 @@ public class Esqueci_Senha extends AppCompatActivity {
 
     private TextView codigo;
     private TextView nif;
-    TextView textoajudar3, txtdigitenif, txtdigitecodigo, digitenif, digitecodigo;
-    Button ajudar3, btnvalidar;
+    TextView textoajudar, txtdigitenif, txtdigitecodigo, digitenif, digitecodigo;
+    Button ajudar, validar, voltar, sair;
 
    String JSON_STRING;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //--------------------------------------------------------------------------------------------
-        //tirar bordas
-        /*requestWindowFeature(Window.FEATURE_NO_TITLE);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().hide();*/
+        getSupportActionBar().hide();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_esqueci_senha);
         //---------------------------------------------------
         //criação da var com a "senha"
         String varcod;
-        varcod="000000";
+        varcod = "000000";
         //---------------------------------------------------------------------------------------------
         //Execução Automática do código
-        codigo=findViewById(R.id.digitecodigo);
-        nif=findViewById(R.id.digitenif);
+        codigo = findViewById(R.id.digitecodigo);
+        nif = findViewById(R.id.digitenif);
         codigo.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -71,8 +70,8 @@ public class Esqueci_Senha extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 String conteudo = new String();
-                conteudo=codigo.getText().toString();
-                if(conteudo.length()==6){
+                conteudo = codigo.getText().toString();
+                if (conteudo.length() == 6) {
                     if (conteudo.equals(varcod)) {
                         Toast.makeText(Esqueci_Senha.this, "VALIDADO", Toast.LENGTH_SHORT).show();
                         //DBHelper.GeraCodigo(conteudo);
@@ -84,66 +83,106 @@ public class Esqueci_Senha extends AppCompatActivity {
             }
         });
 
+        ajudar = findViewById(R.id.ajuda3);
+        textoajudar = findViewById(R.id.textoajuda3);
+        txtdigitenif = findViewById(R.id.txtdigitenif);
+        digitenif = findViewById(R.id.digitenif);
+        txtdigitecodigo = findViewById(R.id.txtdigitecodigo);
+        digitecodigo = findViewById(R.id.digitecodigo);
+        validar = findViewById(R.id.btnvalidar);
+        voltar = findViewById(R.id.btnvoltar);
+        sair = findViewById(R.id.sair);
 
+        ajudar.setVisibility(View.VISIBLE);
+        textoajudar.setVisibility(View.INVISIBLE);
+        txtdigitenif.setVisibility(View.VISIBLE);
+        digitenif.setVisibility(View.VISIBLE);
+        txtdigitecodigo.setVisibility(View.VISIBLE);
+        digitecodigo.setVisibility(View.VISIBLE);
+        validar.setVisibility(View.VISIBLE);
+        voltar.setVisibility(View.VISIBLE);
+        sair.setVisibility(View.INVISIBLE);
+
+
+        ajudar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ajudar.setVisibility(View.VISIBLE);
+                textoajudar.setVisibility(View.VISIBLE);
+                txtdigitenif.setVisibility(View.INVISIBLE);
+                digitenif.setVisibility(View.INVISIBLE);
+                txtdigitecodigo.setVisibility(View.INVISIBLE);
+                digitecodigo.setVisibility(View.INVISIBLE);
+                validar.setVisibility(View.INVISIBLE);
+                voltar.setVisibility(View.INVISIBLE);
+                sair.setVisibility(View.VISIBLE);
+            }
+        });
     }
-    public void Voltar (View v){
-        Intent it = new Intent(Esqueci_Senha.this,TelaInicial.class);
+        public void Voltar (View v){
+            Intent it = new Intent(Esqueci_Senha.this, TelaInicial.class);
+            startActivity(it);
+            finish();
+        }
+
+
+        public void getDados (View v){
+            new BackgroundTask().execute();
+        }
+
+        class BackgroundTask extends AsyncTask<Void, Void, String> {
+
+            int x = new Random().nextInt(999999 - 000000) + 999999;
+            String json_url;
+            String codigo = x + "";
+            EditText nif2 = findViewById(R.id.digitenif);
+            int nif = Integer.parseInt(nif2.getText().toString());
+
+            @Override
+            protected void onPreExecute() {
+                //url = "http://androidtut.comli.com/json_get_data.php";
+                //  json_url = "http://192.168.50.116/CencalCantina/validaFormando.php";
+                json_url = "http://10.18.128.140/CencalCantina/enviaEmailCodigoValidacao.php?nif=" + nif + "&codigo=" + codigo;
+            }
+
+            @Override
+            protected String doInBackground(Void... voids) {
+                try {
+                    URL url = new URL(json_url);
+                    HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                    InputStream input = httpURLConnection.getInputStream();
+                    BufferedReader br = new BufferedReader(new InputStreamReader(input));
+                    StringBuilder stringBuilder = new StringBuilder();
+                    while ((JSON_STRING = br.readLine()) != null) {
+                        stringBuilder.append(JSON_STRING + "\n");
+                    }
+                    br.close();
+                    input.close();
+                    httpURLConnection.disconnect();
+                    return stringBuilder.toString().trim();
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+
+            @Override
+            protected void onProgressUpdate(Void... values) {
+                super.onProgressUpdate(values);
+            }
+
+            @Override
+            protected void onPostExecute(String result) {
+                TextView tv = findViewById(R.id.dados);
+                tv.setText(result);
+            }
+        }
+
+    public void sair(View v){
+        Intent it = new Intent(Esqueci_Senha.this, Esqueci_Senha.class);
         startActivity(it);
         finish();
     }
-
-
-    public void getDados(View v) {
-        new BackgroundTask().execute();
     }
-
-    class BackgroundTask extends AsyncTask<Void, Void, String> {
-
-        int x= new Random().nextInt(999999-000000)+999999;
-        String json_url;
-        String codigo=x+"";
-        EditText nif2=findViewById(R.id.digitenif);
-        int nif = Integer.parseInt(nif2.getText().toString());
-
-        @Override
-        protected void onPreExecute() {
-            //url = "http://androidtut.comli.com/json_get_data.php";
-            //  json_url = "http://192.168.50.116/CencalCantina/validaFormando.php";
-            json_url = "http://10.18.128.140/CencalCantina/enviaEmailCodigoValidacao.php?nif="+nif+"&codigo="+codigo;
-        }
-
-        @Override
-        protected String doInBackground(Void... voids) {
-            try {
-                URL url = new URL(json_url);
-                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-                InputStream input = httpURLConnection.getInputStream();
-                BufferedReader br = new BufferedReader(new InputStreamReader(input));
-                StringBuilder stringBuilder = new StringBuilder();
-                while ((JSON_STRING =br.readLine())!=null) {
-                    stringBuilder.append(JSON_STRING+"\n");
-                }
-                br.close();
-                input.close();
-                httpURLConnection.disconnect();
-                return stringBuilder.toString().trim();
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onProgressUpdate(Void... values) {
-            super.onProgressUpdate(values);
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            TextView tv = findViewById(R.id.dados);
-            tv.setText(result);
-        }
-    }
-}
