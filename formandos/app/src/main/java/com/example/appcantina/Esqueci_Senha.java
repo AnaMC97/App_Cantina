@@ -60,7 +60,7 @@ public class Esqueci_Senha extends AppCompatActivity {
                 if(conteudo.length()==6){
                     if (conteudo.equals(varcod)) {
                         Toast.makeText(Esqueci_Senha.this, "VALIDADO", Toast.LENGTH_SHORT).show();
-                        Intent it = new Intent(Esqueci_Senha.this, TelaInicial.class);
+                        Intent it = new Intent(Esqueci_Senha.this, telaAlmoco.class);
                         startActivity(it);
                         finish();
                     }
