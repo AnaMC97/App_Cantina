@@ -21,8 +21,8 @@ public class Esqueci_Senha extends AppCompatActivity {
 
     private TextView codigo;
     private TextView nif;
-    TextView textoajudar3, txtdigitenif, txtdigitecodigo, digitenif, digitecodigo;
-    Button ajudar3, btnvalidar;
+    TextView textoajudar, txtdigitenif, txtdigitecodigo, digitenif, digitecodigo;
+    Button ajudar, btnvalidar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +60,7 @@ public class Esqueci_Senha extends AppCompatActivity {
                 if(conteudo.length()==6){
                     if (conteudo.equals(varcod)) {
                         Toast.makeText(Esqueci_Senha.this, "VALIDADO", Toast.LENGTH_SHORT).show();
-                        Intent it = new Intent(Esqueci_Senha.this, TelaInicial.class);
+                        Intent it = new Intent(Esqueci_Senha.this, telaAlmoco.class);
                         startActivity(it);
                         finish();
                     }
@@ -76,9 +76,9 @@ public class Esqueci_Senha extends AppCompatActivity {
 
         txtdigitenif.setVisibility(View.INVISIBLE);
 
-        ajudar3 = findViewById(R.id.ajuda3);
-        textoajudar3 = findViewById(R.id.textoajuda3);
-        ajudar3.setOnClickListener(new View.OnClickListener() {
+        ajudar = findViewById(R.id.ajuda3);
+        textoajudar = findViewById(R.id.textoajuda3);
+        ajudar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 txtdigitenif.setVisibility(View.INVISIBLE);
@@ -86,7 +86,7 @@ public class Esqueci_Senha extends AppCompatActivity {
                 btnvalidar.setVisibility(View.INVISIBLE);
                 txtdigitecodigo.setVisibility(View.INVISIBLE);
                 digitecodigo.setVisibility(View.INVISIBLE);
-                textoajudar3.setVisibility(View.VISIBLE);
+                textoajudar.setVisibility(View.VISIBLE);
             }
         });
     }
@@ -103,10 +103,11 @@ public class Esqueci_Senha extends AppCompatActivity {
         }else{
             Toast.makeText(this, "NIF INCORRETO, POR FAVOR VERIFIQUE OS DADOS INSERIDOS", Toast.LENGTH_SHORT).show();
         }
-      /*  Intent it = new Intent(Esqueci_Senha.this,TelaInicial.class);
+
+        Intent it = new Intent(Esqueci_Senha.this,Residentes.class);
         startActivity(it);
         finish();
-       */
+
     }
 
 

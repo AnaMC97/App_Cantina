@@ -7,11 +7,51 @@
     tools:context=".Tela_2_Cantina">
 
     <Button
+        android:id="@+id/sair3"
+        android:layout_width="70dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#6ECCAF"
+        android:gravity="center"
+        android:onClick="sair"
+        android:paddingLeft="15dp"
+        android:text="X"
+        android:textSize="12pt"
+        app:cornerRadius="70dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ajuda2" />
+
+    <Button
+        android:id="@+id/quafeira"
+        android:layout_width="140dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="80dp"
+        android:backgroundTint="#8C8C8C"
+        android:text="4f"
+        android:textSize="60sp"
+        app:layout_constraintStart_toEndOf="@+id/terfeira"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/sexfeira"
+        android:layout_width="140dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="80dp"
+        android:backgroundTint="#8C8C8C"
+        android:text="6f"
+        android:textSize="60sp"
+        app:layout_constraintStart_toEndOf="@+id/quifeira"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
         android:id="@+id/segfeira"
         android:layout_width="140dp"
         android:layout_height="120dp"
-        android:layout_marginStart="450dp"
-        android:layout_marginTop="47dp"
+        android:layout_marginStart="436dp"
+        android:layout_marginTop="80dp"
         android:backgroundTint="#8C8C8C"
         android:text="2f"
         android:textSize="60sp"
@@ -23,7 +63,7 @@
         android:layout_width="140dp"
         android:layout_height="120dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="80dp"
         android:backgroundTint="#8C8C8C"
         android:text="3f"
         android:textSize="60sp"
@@ -31,39 +71,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/quafeira"
-        android:layout_width="140dp"
-        android:layout_height="120dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="47dp"
-        android:backgroundTint="#8C8C8C"
-        android:text="4f"
-        android:textSize="60sp"
-        app:layout_constraintStart_toEndOf="@+id/terfeira"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
         android:id="@+id/quifeira"
         android:layout_width="140dp"
         android:layout_height="120dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="80dp"
         android:backgroundTint="#8C8C8C"
         android:text="5f"
         android:textSize="60sp"
         app:layout_constraintStart_toEndOf="@+id/quafeira"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/sexfeira"
-        android:layout_width="140dp"
-        android:layout_height="120dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="47dp"
-        android:backgroundTint="#8C8C8C"
-        android:text="6f"
-        android:textSize="60sp"
-        app:layout_constraintStart_toEndOf="@+id/quifeira"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -91,7 +107,8 @@
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/sopa" />
+        app:srcCompat="@drawable/sopa"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/atualizaSobremesa"
@@ -105,14 +122,15 @@
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/atualizaSopa"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/sobremesa" />
+        app:srcCompat="@drawable/sobremesa"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/Voltar"
         android:layout_width="300dp"
         android:layout_height="120dp"
         android:layout_marginStart="75dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="30dp"
         android:backgroundTint="#8C8C8C"
         android:onClick="Voltar"
         android:text="Voltar"
@@ -120,77 +138,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/atualizarementa" />
 
-    <ImageButton
-        android:id="@+id/imgsopasobremesa"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:layout_marginStart="450dp"
-        android:layout_marginTop="10dp"
-        android:background="#FFDAB9"
-        android:scaleType="centerInside"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/segfeira"
-        app:srcCompat="@drawable/sopa"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <ImageButton
-        android:id="@+id/imgcarne"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:layout_marginStart="450dp"
-        android:layout_marginTop="8dp"
-        android:background="#CCA6A6"
-        android:scaleType="centerInside"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgsopasobremesa"
-        app:srcCompat="@drawable/carne"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <ImageButton
-        android:id="@+id/imgveg"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:layout_marginStart="450dp"
-        android:layout_marginTop="8dp"
-        android:background="#3cb371"
-        android:scaleType="centerInside"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgpeixe"
-        app:srcCompat="@drawable/vegatariano"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <ImageButton
-        android:id="@+id/imglua"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:layout_marginStart="450dp"
-        android:layout_marginTop="8dp"
-        android:background="#98d8f8"
-        android:scaleType="centerInside"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgveg"
-        app:srcCompat="@drawable/lua"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <ImageButton
-        android:id="@+id/imgpeixe"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:layout_marginStart="450dp"
-        android:layout_marginTop="8dp"
-        android:background="#90BEE3"
-        android:scaleType="centerInside"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgcarne"
-        app:srcCompat="@drawable/peixe"
-        tools:ignore="SpeakableTextPresentCheck" />
-
     <EditText
         android:id="@+id/ementasopasobremesa"
         android:layout_width="595dp"
         android:layout_height="110dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="48dp"
         android:background="#FFDAB9"
         android:text="Button"
         android:textColor="#000000"
@@ -198,12 +151,25 @@
         app:layout_constraintStart_toEndOf="@+id/imgsopasobremesa"
         app:layout_constraintTop_toBottomOf="@+id/segfeira" />
 
+    <ImageButton
+        android:id="@+id/imgcarne"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="444dp"
+        android:layout_marginTop="12dp"
+        android:background="#CCA6A6"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgsopasobremesa"
+        app:srcCompat="@drawable/carne"
+        tools:ignore="SpeakableTextPresentCheck" />
+
     <EditText
         android:id="@+id/ementacarne"
         android:layout_width="595dp"
         android:layout_height="110dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
         android:background="#CCA6A6"
         android:text="Button"
         android:textColor="#000000"
@@ -213,11 +179,64 @@
         app:layout_constraintTop_toBottomOf="@+id/ementasopasobremesa" />
 
     <EditText
+        android:id="@+id/ementaveg"
+        android:layout_width="595dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#3cb371"
+        android:text="Button"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        android:textSize="40sp"
+        app:layout_constraintStart_toEndOf="@+id/imgveg"
+        app:layout_constraintTop_toBottomOf="@+id/ementapeixe" />
+
+    <ImageButton
+        android:id="@+id/imgpeixe"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="444dp"
+        android:layout_marginTop="12dp"
+        android:background="#90BEE3"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgcarne"
+        app:srcCompat="@drawable/peixe"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/imgsopasobremesa"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="444dp"
+        android:layout_marginTop="48dp"
+        android:background="#FFDAB9"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/segfeira"
+        app:srcCompat="@drawable/sopa"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/imgveg"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="444dp"
+        android:layout_marginTop="8dp"
+        android:background="#3cb371"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgpeixe"
+        app:srcCompat="@drawable/vegatariano"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
         android:id="@+id/ementapeixe"
         android:layout_width="595dp"
         android:layout_height="110dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
         android:background="#90BEE3"
         android:text="Button"
         android:textColor="#000000"
@@ -242,34 +261,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/ementaveg"
-        android:layout_width="595dp"
-        android:layout_height="110dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="#3cb371"
-        android:text="Button"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
-        android:textSize="40sp"
-        app:layout_constraintStart_toEndOf="@+id/imgveg"
-        app:layout_constraintTop_toBottomOf="@+id/ementapeixe" />
-
-    <EditText
-        android:id="@+id/ementajantar"
-        android:layout_width="595dp"
-        android:layout_height="110dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="#98d8f8"
-        android:text="Button"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
-        android:textSize="40sp"
-        app:layout_constraintStart_toEndOf="@+id/imglua"
-        app:layout_constraintTop_toBottomOf="@+id/ementaveg" />
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="300dp"
@@ -283,5 +274,18 @@
         android:textSize="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textoajudar2"
+        android:layout_width="720dp"
+        android:layout_height="500dp"
+        android:text="@string/AjudaEmenta"
+        android:textSize="17pt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.792"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.666" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

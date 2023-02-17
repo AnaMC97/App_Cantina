@@ -196,7 +196,7 @@
         android:layout_width="70dp"
         android:layout_height="80dp"
         android:layout_marginStart="11dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="92dp"
         android:layout_marginEnd="16dp"
         android:backgroundTint="#6ECCAF"
         android:text="\?"
@@ -204,7 +204,7 @@
         app:cornerRadius="70dp"
         app:iconPadding="0dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.944"
+        app:layout_constraintHorizontal_bias="0.941"
         app:layout_constraintStart_toEndOf="@+id/sexfeira"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -231,9 +231,34 @@
         android:textSize="14pt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+<<<<<<< HEAD
         app:layout_constraintHorizontal_bias="0.803"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.73" />
+=======
+        app:layout_constraintHorizontal_bias="0.791"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.76" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="75dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="548dp"
+        android:backgroundTint="#6ECCAF"
+        android:gravity="center"
+        android:paddingLeft="25dp"
+        app:cornerRadius="10dp"
+        app:icon="@drawable/ic_baseline_arrow_forward_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.692"
+        app:layout_constraintStart_toEndOf="@+id/sexfeira"
+        app:layout_constraintTop_toBottomOf="@+id/ajuda"
+        app:layout_constraintVertical_bias="0.0" />
+>>>>>>> 14b904e86b32907f5bab6b695675b4a264d02c3d
 
 </androidx.constraintlayout.widget.ConstraintLayout>
